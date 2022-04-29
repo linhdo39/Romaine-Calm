@@ -1,8 +1,7 @@
 # Default ignored files
 /shelf/
-/workspace.xml
-*.iml
-*.xml
+/.idea/workspace.xml
+*.idea
 *.log
 *.pot
 *.pyc
