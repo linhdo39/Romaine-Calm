@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+*.iml
+*.xml
+*.log
+*.pot
+*.pyc
+pycache
+db.sqlite3
+media
