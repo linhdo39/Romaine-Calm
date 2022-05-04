@@ -6,6 +6,7 @@ def get_data():
     return 1
 
 def seed_data():
+    #get_data()
     return 1
 
 class Command(BaseCommand):
