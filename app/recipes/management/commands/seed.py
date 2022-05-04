@@ -4,7 +4,8 @@ from recipes.models import Recipe
 
 def get_data():
     #setup the http request
-    url = 'https://api.edamam.com/api/recipes/v2?type=public&q=dinner&app_id=5e46e2fc&app_key=73242337544cac1a326435a7ab5bec29'
+    url = 'https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=dinner&app_id=5e46e2fc&app_key=73242337544cac1a326435a7ab5bec29&random=true'
+
     r = requests.get(url, headers={'Content-Type':      
     'application/json'})
     #save the json respone into variable
