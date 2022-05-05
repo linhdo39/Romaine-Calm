@@ -7,7 +7,7 @@
 *.pyc
 pycache
 media
-
+recipes/info.py
 # dependencies
 /node_modules
 /.pnp
