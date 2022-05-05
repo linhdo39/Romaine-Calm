@@ -1,13 +1,5 @@
-# Default ignored files
-/shelf/
-/.idea/workspace.xml
-*.idea
-*.log
-*.pot
-*.pyc
-pycache
-media
-recipes/info.py
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # dependencies
 /node_modules
 /.pnp
@@ -29,4 +21,3 @@ recipes/info.py
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
