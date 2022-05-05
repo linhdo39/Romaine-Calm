@@ -20,16 +20,11 @@ def get_data():
 def seed_data():
     items = get_data()
     for item in items:
+        uri = item["recipe"]["uri"]
+        uri = uri.replace("http://www.edamam.com/ontologies/edamam.owl#recipe_","")
         recipe = Recipe (
             name = item["recipe"]["label"],
-            recipe_url = item["recipe"]["uri"],
-            image_url = item["recipe"]["image"],
-            ingredient = item["recipe"]["ingredientLines"],
-            calories = item["recipe"]["calories"],
-            total_time = item["recipe"]["totalTime"],
-            cuisine = item["recipe"]["cuisineType"],
-            mealType = item["recipe"]["mealType"],
-            dishType = item["recipe"]["dishType"]
+            recipe_id = uri         
         )
 
         recipe.save()
