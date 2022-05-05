@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages',
     'recipes'
-    'corsheaders',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
