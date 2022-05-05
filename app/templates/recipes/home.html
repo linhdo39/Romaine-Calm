@@ -3,6 +3,14 @@
 {% block content %}
 <h1>
     This is the RECIPE homepage
+
+    {% for recipe in recipe_list %}
+        <li>
+            {{recipe}}
+        </li>
+    {% endfor %}
 </h1>
+
+
 
 {% endblock %}
