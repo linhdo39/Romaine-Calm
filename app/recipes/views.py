@@ -9,3 +9,5 @@ def index_view(response):
     #return HttpResponse("recipe home")
     recipe_list = Recipe.objects.all()
     return render(response, "recipes/home.html", {'recipe_list': recipe_list})
+
+
