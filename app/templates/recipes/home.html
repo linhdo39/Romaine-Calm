@@ -60,6 +60,15 @@
                     border: 1px solid #e7e7e7;
                     background-color: #f3f3f3;
                 }
+                
+                ul.a {
+                    list-style-type:circle;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    border: 1px transparent;
+                    background-color: transparent
+                }
 
                 li {
                     float: left;
@@ -108,6 +117,16 @@
                                         style="text-indent: 4px;font-size: 21px;padding-left: 12px;z-index:1000; width:100% !important">
                                 </div>
                             </form>
+                        </div>
+                        <!-- Display list of recipes to choose from-->
+                        <div>
+                            
+                            {% for recipe in recipe_list%}     
+                            <ul class="a">                       
+                                <li><a href= {{recipe.recipe_id}}>{{recipe.name}}</a></li>
+                                <br>
+                            </ul>
+                            {% endfor %}      
                         </div>
                     </div>
                 </div>
