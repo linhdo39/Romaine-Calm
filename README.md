@@ -10,6 +10,8 @@ ___
 - Install Django: pip install django
 - Install Requests: pip install requests
 - Install corsheaders: pip install djangorestframework django-cors-headers
+- Install cripsy-form: pip install --user django-crispy-forms
+- For Mac user, in recipes/models.py, comment out the first line (from asyncio.windows_events import NULL)
 - python manage.py runserver
 - For mac users comment first line in recipes/models.py(line: from asyncio.windows_events import NULL)
 - run code using python3 manage.py runserver
