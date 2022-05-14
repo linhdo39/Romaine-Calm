@@ -9,7 +9,13 @@ def homepage_view(response):
     return render(response, "pages/home.html", {})
 
 
+def profile_view(response):
+    return render(response, "pages/soon.html", {})
+
+def about_view(response):
+    return render(response, "pages/soon.html", {})
+
 #TEST CAN BE REMOVED FOR PRODUCTION
 
 def help_view(response):
-    return HttpResponse("THIS IS THE HELP PAGE", {})
+    return render(response, "pages/soon.html", {})
