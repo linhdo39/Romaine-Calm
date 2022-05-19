@@ -15,6 +15,15 @@ def profile_view(response):
 def about_view(response):
     return render(response, "pages/soon.html", {})
 
+def news_view(response):
+    return render(response, "pages/soon.html", {})
+
+def contact_view(response):
+    return render(response, "pages/soon.html", {})
+
+def add_recipe_view(response):
+    return render(response, "pages/soon.html", {})
+
 #TEST CAN BE REMOVED FOR PRODUCTION
 
 def help_view(response):
