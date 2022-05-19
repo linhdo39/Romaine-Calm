@@ -3,74 +3,40 @@
 
 <head>
     <link rel="stylesheet" href="./style.css">
-
-    <!-- <style>
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            max-width: 300px;
-            margin: auto;
-            padding: 16px;
-            text-align: center;
-            font-family: arial;
-            background-color: #f1f1f1;
-        }
-
-        .card button {
-            border: none;
-            outline: 0;
-            padding: 12px;
-            color: rgb(16, 16, 16);
-            background-color: rgba(0, 0, 0, 0.29);
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-            font-size: 18px;
-        }
-
-        .card button:hover {
-            opacity: 0.7;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        /* Float four columns side by side */
-        .column {
-            float: left;
-            width: 25%;
-            padding: 0 10px;
-        }
-
-        /* Remove extra left and right margins, due to padding in columns */
-        .row {
-            margin: 0 -5px;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        /* Responsive columns - one column layout (vertical) on small screens */
-        @media screen and (max-width: 600px) {
-            .column {
-                width: 100%;
-                display: block;
-                margin-bottom: 20px;
-            }
-        }
-    </style> -->
 </head>
 
-
 <body>
-
+    <div class="wrapper">
+        <div class="container">        
+            <div class="jumbotron homepage-hero hidden-xs">
+                <div class="homepage-hero-content">
+                    <ul>
+                        <li><a class="active" href='/'>Home</a></li>
+                        <li><a href="/profile">My Profile</a></li>
+                        <li><a href="/add_recipe/">Add Recipe</a></li>
+                        <li><a href="/recipes/">Find Recipe</a></li><!-- This will be list of recipes to choose from-->
+                        <li><a href="/help/">Help</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                    <h1 class="text-shadow hometitle centered"
+                        style="color:#fff; background-color: #b2b2b2; font-weight: bold; text-align: center;">Romaine
+                        Calm</h1>
+                    <div class="homepage-search hidden-xs">
+                        <div>
+                            <form role="search">
+                                <div class="input-group"
+                                    style="background-color: #ffffff;border-radius:5px; z-index:0 !important;">
+                                    <!-- <input type="text" class="typeahead search-input-button" id="txtSearch1"
+                                        placeholder="Search recipes" autofocus=""
+                                        style="text-indent: 4px;font-size: 21px;padding-left: 12px;z-index:1000; width:100% !important"> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="recipeentry" style="width:95%;">
         <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
