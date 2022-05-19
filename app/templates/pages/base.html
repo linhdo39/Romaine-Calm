@@ -85,11 +85,11 @@
           
             <div class="jumbotron homepage-hero hidden-xs">
                 <div class="homepage-hero-content">
-                    {% if user.is_authenticated%}
+                    {% if user.is_authenticated %}
                         <ul>
                             <li><a class="active" href="{% url 'home' %}">Home</a></li>
                             <li><a href="{% url 'profile' %}">My Profile</a></li>
-                            <li><a href="#Add Recipe">Add Recipe</a></li>
+                            <li><a href="{% url 'add_recipe' %}">Add Recipe</a></li>
                             <li><a href="{% url 'recipes' %}">Find Recipe</a></li><!-- This will be list of recipes to choose from-->
                             <li><a href="{% url 'help' %}">Help</a></li>
                             <li><a href="/logout">Logout</a></li>
@@ -97,8 +97,8 @@
                     {% else %}
                         <ul>
                             <li><a class="active" href="{% url 'home' %}">Home</a></li>
-                            <li><a href="#news">News</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="{% url 'news' %}">News</a></li>
+                            <li><a href="{% url 'contact' %}">Contact</a></li>
                             <li><a href="{% url 'about' %}">About</a></li>
                             <li><a href="/login">Login</a></li>
                         </ul> 
