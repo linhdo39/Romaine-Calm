@@ -1,9 +1,4 @@
 {% extends 'pages/base.html' %}
-
-{% block title %}
-Home
-{% endblock %}
-
 {% block content %}
 <!doctype html>
 <html lang="en">
@@ -11,110 +6,81 @@ Home
 <body>
     <div class="wrapper">
         <div class="container">        
-            <div class="jumbotron homepage-hero hidden-xs">
-                <div class="homepage-hero-content">
-                    <ul>
-                        <li><a class="active" href='/'>Home</a></li>
-                        <li><a href="/profile">My Profile</a></li>
-                        <li><a href="/add_recipe/">Add Recipe</a></li>
-                        <li><a href="/recipes/">Find Recipe</a></li><!-- This will be list of recipes to choose from-->
-                        <li><a href="/help/">Help</a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    </ul>
-                    <h1 class="text-shadow hometitle centered"
-                        style="color:#fff; background-color: #b2b2b2; font-weight: bold; text-align: center;">Romaine
-                        Calm</h1>
-                    <div class="homepage-search hidden-xs">
+            <div class="recipeentry" style="width:95%;">
+                <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
+                    <fieldset>
+                        <legend>
+                            <h3>Favorite</h3>
+                        </legend>
                         <div>
-                            <form role="search">
-                                <div class="input-group"
-                                    style="background-color: #ffffff;border-radius:5px; z-index:0 !important;">
-                                    <!-- <input type="text" class="typeahead search-input-button" id="txtSearch1"
-                                        placeholder="Search recipes" autofocus=""
-                                        style="text-indent: 4px;font-size: 21px;padding-left: 12px;z-index:1000; width:100% !important"> -->
+                        </div>
+                        <div class="row">
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+
+                        <div class="row">
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="card">
+                                    <img src="" alt="recipe image" style="width:100%">
+                                    <p>Recipe Title.</p>
+                                    <p><button>Full Recipe</button></p>
+                                </div>
+                            </div>
+                        </div>
+            </fieldset>
+
+            </form>
         </div>
-    </div>
-    <div class="recipeentry" style="width:95%;">
-        <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
-            <fieldset>
-                <legend>
-                    <h3>Favorite</h3>
-                </legend>
-                <div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>Full Recipe</button></p>
-                        </div>
-                    </div>
-                </div>
-    </div>
-    </fieldset>
-
-    </form>
-    </div>
     </div>
 </body>
 
 </html>
+{% endblock %}
