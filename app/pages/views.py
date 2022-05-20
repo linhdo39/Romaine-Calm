@@ -10,6 +10,10 @@ def homepage_view(response):
 
 
 def profile_view(response):
+    return render(response, "pages/myprofile.html", {})
+
+
+def favorite_view(response):
     return render(response, "pages/favorite.html", {})
 
 def about_view(response):
