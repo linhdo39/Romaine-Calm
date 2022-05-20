@@ -10,7 +10,7 @@ def homepage_view(response):
 
 
 def profile_view(response):
-    return render(response, "pages/Favorite.html", {})
+    return render(response, "pages/favorite.html", {})
 
 def about_view(response):
     return render(response, "pages/soon.html", {})
@@ -22,7 +22,7 @@ def contact_view(response):
     return render(response, "pages/soon.html", {})
 
 def add_recipe_view(response):
-    return render(response, "pages/AddUserRecipe.html", {})
+    return render(response, "pages/addUserRecipe.html", {})
 
 #TEST CAN BE REMOVED FOR PRODUCTION
 
