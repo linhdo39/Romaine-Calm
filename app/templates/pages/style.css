@@ -28,8 +28,13 @@
 	box-sizing: border-box;
 }
 
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	max-width: 960px;
+	margin:auto;
+	
+	
 }
 
 /* Float four columns side by side */

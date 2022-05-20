@@ -9,7 +9,7 @@
     label {
         width: 180px;
         clear: left;
-        text-align: right;
+        text-align: left;
         padding-right: 10px;
     }
 
@@ -17,6 +17,7 @@
     label,
     textarea {
         float: left;
+
     }
 
     input[type=submit] {
@@ -29,16 +30,17 @@
     }
 </style>
 
-<body>
-    <div class="Contactus" style="width:95%;">
-        <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
+<body align="center">
+    <div class="Contactus" style="width:75%;margin: auto;">
+        <form action="/recipe/post" method="post">
+            <input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
                 <legend>
                     <h3>Contact Us</h3>
                 </legend>
                 <div></div>
-                <div style="width:95%;">
-                    <div style="float:left;width:100%;">
+                <div style="width:70%;">
+                    <div style="width:100%;">
                         <a name="dataEntry"></a>
                         <div class="form-group" style="width:100%;">
                             <label for="fname">First Name</label>
@@ -51,16 +53,12 @@
                             <input type="email" id="email" name="email" placeholder="Your Email..">
 
                             <label for="subject">Subject</label>
-
-                            <textarea id="subject" name="subject" placeholder="Write something.."
-                                style="width:23% !important;font-size:11pt;height:80px;"></textarea>
-
-                            <input type="submit" value="Submit" align="center">
+                            <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
                         </div>
                     </div>
                 </div>
             </fieldset>
-
+            <input type="submit" value="Submit" align="center">
         </form>
     </div>
     </div>
