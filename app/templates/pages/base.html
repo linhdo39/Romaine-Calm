@@ -1,11 +1,15 @@
-<html>
+<!doctype html>
+<html lang="en">
+ 
 <head>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>{%block title%}Romaine-Calm{% endblock %}</title>
 </head>
-    <body>
-        <!doctype html>
+
 <body>
     <div class="wrapper">
         <div class="container">          
@@ -17,6 +21,19 @@
                             <li><a href="{% url 'profile' %}">My Profile</a></li>
                             <li><a href="{% url 'favorite' %}">Favorite</a></li>
                             <li><a href="{% url 'add_recipe' %}">Add Recipe</a></li>
+
+
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Profile
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a></li>
+                                  <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile Page</a></li>
+                                </ul>
+                              </li>
+                            <li><a href="#Add Recipe">Add Recipe</a></li>
+>>>>>>> Stashed changes
                             <li><a href="{% url 'recipes' %}">Find Recipe</a></li><!-- This will be list of recipes to choose from-->
                             <li><a href="{% url 'help' %}">Help</a></li>
                             <li><a href="/logout">Logout</a></li>
