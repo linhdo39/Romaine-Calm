@@ -8,7 +8,6 @@ import requests
 # Create your views here.
 
 def all_view(response):
-    #return HttpResponse("recipe home")
     recipe_list = Recipe.objects.order_by('?')[:20]
     return render(response, "recipes/findRecipe.html", {'recipe_list': recipe_list})
 
