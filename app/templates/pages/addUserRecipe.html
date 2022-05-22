@@ -1,10 +1,20 @@
 {% extends 'pages/base.html' %}
+<<<<<<< HEAD:app/templates/pages/addUserRecipe.html
 {% block content %}
 <!doctype html>
 <html lang="en">
 
 <body>
     <div class="recipeentry" style="width:95%;">
+=======
+<!doctype html>
+<html lang="en">
+
+<head></head>
+
+<body align="center">
+    <div class="recipeentry" style="width:75%;margin: auto;">
+>>>>>>> Twinkle-Branch:app/templates/pages/AddUserRecipe.html
         <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
                 <legend>
@@ -41,7 +51,8 @@
                     </div>
 
                     <div id="categorize">
-                        <label for="PrimaryRecipeCategory"> Category </label>
+                        <div></div>
+                        <!-- <label for="PrimaryRecipeCategory"> Category </label> -->
                         <div id="catpicker">
                             <script type="text/javascript">
                                 function changeDrop() {
@@ -57,21 +68,16 @@
                                     );
                                 }                               
                             </script>
-                            <span style="float:left;width:200px;">
+                            <span style="float:left;width:500px;">
                                 <select name="primaryrecipecategory" class="form-control" onchange="changeDrop();"
-                                    id="primaryrecipecategory">
-                                    <option value="0">-- Select One --</option>
-                                    <option value="1">Appetizers</option>
-                                    <option value="2">Bread</option>
-                                    <option value="3">Breakfast</option>
-                                    <option value="4">Desserts</option>
-                                    <option value="5">Drinks</option>
-                                    <option value="6">Main Dish</option>
-                                    <option value="7">Salad</option>
-                                    <option value="8">Side Dish</option>
-                                    <option value="9">Soups, Stews and Chili</option>
-                                    <option value="10">Marinades and Sauces</option>
-                                    <option value="11">Other</option>
+                                    id="primaryrecipecategory" style="width:300px ; text-align: center;">
+                                    <option value="0">---- Select Recipe Categoty ----</option>
+                                    <option value="1">Breakfast</option>
+                                    <option value="2">Brunch</option>
+                                    <option value="3">Lunch</option>
+                                    <option value="4">Dinner</option>
+                                    <option value="5">Dessert</option>
+
                                 </select>
                             </span>
                         </div>
@@ -81,7 +87,6 @@
                             <tr>
                                 <td style="padding-right:44px;">
                                     <label for="TotalHrs">TOTAL time </label>
-
                                     <input class="form-control" id="totalhrs" maxlength="5" name="totalhrs"
                                         style="width:60px;display:inline;" type="text" value="0" /> hrs
                                     <input class="form-control" id="totalmins" maxlength="5" name="totalmins"
@@ -112,5 +117,9 @@
     </div>
 </body>
 
+<<<<<<< HEAD:app/templates/pages/addUserRecipe.html
 </html>
 {% endblock %}
+=======
+</html>
+>>>>>>> Twinkle-Branch:app/templates/pages/AddUserRecipe.html
