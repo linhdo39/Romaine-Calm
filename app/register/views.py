@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import  render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -8,6 +9,10 @@ from .forms import RegisterForm, EditProfileForm,PasswordChangingForm, UserUpdat
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+=======
+from django.shortcuts import render, redirect
+from .forms import RegisterForm
+>>>>>>> parent of 2741b71 (resoved conflicts)
 
 # Create your views here.
 def register(response):
@@ -18,6 +23,7 @@ def register(response):
         return redirect('/home')
     else:
         form = RegisterForm()
+<<<<<<< HEAD
     return render(response, "register/register.html", {"form":form})
 
 @login_required
@@ -64,3 +70,6 @@ class EditProfilePageView(generic.UpdateView):
     fields = ["bio","profile_image"]
 
 
+=======
+    return render(response, "register/register.html", {"form":form})
+>>>>>>> parent of 2741b71 (resoved conflicts)

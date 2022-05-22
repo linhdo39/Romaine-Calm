@@ -19,8 +19,8 @@ from django.contrib import admin
 from django.urls import path
 from pages.views import about_view
 from pages.views import homepage_view
-from pages.views import profile_view
 from pages.views import help_view
+from pages.views import profile_view
 from register import views as v
 from recipes.views import index_view
 from recipes.views import all_view
@@ -32,6 +32,8 @@ from pages.views import favorite_view
 from register import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
+
+
 
 
 
@@ -52,6 +54,9 @@ urlpatterns = [
     path('contact/', contact_view, name= 'contact'),
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
     path('favorite/', favorite_view, name= 'favorite')
+    path('profile/', profile_view, name= 'profile'),
+    path('about/', about_view, name= 'about')
+
 ]
 
 if settings.DEBUG:

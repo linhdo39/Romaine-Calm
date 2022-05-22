@@ -1,11 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 from PIL import Image
+=======
+>>>>>>> parent of 2741b71 (resoved conflicts)
 
 # Create your models here.
 class Meta:
     model = User
     fields = ["username", "email", "password1", "password2"]
+<<<<<<< HEAD
     
 # Create your models here.
 
@@ -33,3 +37,6 @@ class Profile(models.Model):
 
         
  
+=======
+    
+>>>>>>> parent of 2741b71 (resoved conflicts)
