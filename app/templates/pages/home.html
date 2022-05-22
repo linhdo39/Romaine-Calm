@@ -4,15 +4,22 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        legend {
+            width: 50px;
+            padding: 2px;
+            margin-left: calc(50% - - 8px);
+        }
+    </style>
 </head>
+<title>Romaine Calm</title>
 
-<body align="center">
+<body align=" center"> 
     <div class="recipeentry" style="width:75%;margin: auto;">
         <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
                 <legend>
-                    <h3>Recipe</h3>
+                    <h3>Home</h3>
                 </legend>
                 <div>
                 </div>
@@ -44,6 +51,7 @@
                 </div>
                 <br>
                 <div>
+                    
                     <b><label for="Instruction"> <a href={{recipe.instruction}} target="_blank">View Instructions
                                 here</a></label></b>
                 </div>
