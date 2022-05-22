@@ -167,6 +167,47 @@ li.a.active {
 	}
 }
 
+<<<<<<< HEAD
+=======
+
+ul li {
+	position: relative;
+}
+
+ul li ul{
+	display: none;
+	position: absolute;
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 0px 0px 4px 4px;
+
+}
+ul li:hover ul{
+	display: block;
+	position: absolute;
+
+
+}
+
+ul li ul li{
+	width: 180px;
+	border-radius: 4px;
+
+
+}
+
+ul li ul li a{
+	padding: 8px 14px;
+
+}
+
+ul li ul li a:hover{
+	display: block;
+	background-color: #f3f3f3;
+
+}
+
+>>>>>>> 3909872 (adding new code)
 .account-img {
 	height: 125px;
 	width: 125px;
