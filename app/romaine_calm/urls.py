@@ -22,12 +22,15 @@ from pages.views import homepage_view
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from pages.views import profile_view
 >>>>>>> 3909872 (adding new code)
 from pages.views import help_view
 from pages.views import profile_view
 =======
+=======
+>>>>>>> 3909872 (adding new code)
 =======
 >>>>>>> 3909872 (adding new code)
 from pages.views import profile_view
@@ -38,6 +41,9 @@ from recipes.views import all_view
 from register.views import UserEditView, PasswordChangeView,EditProfilePageView
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3909872 (adding new code)
+=======
 >>>>>>> 3909872 (adding new code)
 =======
 >>>>>>> 3909872 (adding new code)
@@ -53,6 +59,12 @@ from recipes.views import all_view
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+from register import views as user_views
+from django.conf import settings
+from django.conf.urls.static import static
+>>>>>>> 3909872 (adding new code)
 =======
 from register import views as user_views
 from django.conf import settings
@@ -80,8 +92,11 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('profile/', profile_view, name= 'profile'),
 =======
+=======
+>>>>>>> 3909872 (adding new code)
 =======
 >>>>>>> 3909872 (adding new code)
 =======
@@ -92,6 +107,9 @@ urlpatterns = [
     path('password/',PasswordChangeView.as_view(template_name="registration/change-password.html")),
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3909872 (adding new code)
+=======
 >>>>>>> 3909872 (adding new code)
 =======
 >>>>>>> 3909872 (adding new code)
@@ -105,7 +123,10 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3909872 (adding new code)
 =======
 >>>>>>> 3909872 (adding new code)
 =======
