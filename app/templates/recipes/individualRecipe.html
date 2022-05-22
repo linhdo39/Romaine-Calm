@@ -1,0 +1,76 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body align="center">
+    <div class="recipeentry" style="width:75%;margin: auto;">
+        <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
+            <fieldset>
+                <legend>
+                    <h3>Recipe</h3>
+                </legend>
+                <div>
+                </div>
+                <div style="width:95%;">
+                    <div>
+                        <a name="dataEntry"></a>
+                        <div class="form-group" style="width:100%;">
+                            <label for="Title"> {{recipe.name}} </label><br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div></div>
+                <div>
+                    <div>
+                        <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} />
+
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <b><label for="Ingredient">Ingredient </label></b>
+                                <ul class='a'>
+                                {% for line in recipe.ingredients%}     
+                                    <li class ='b'> {{line}} </li>
+                                {% endfor %}   
+                                </ul>
+                            </div>
+                            <br>
+                            <div>
+                                <b><label for="Instruction"> <a href = {{recipe.instruction}} target="_blank">View Instructions here</a></label></b>
+                            </div>
+                        </fieldset>
+                        <div>
+                            <br />
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <label for="Ingredient">Ingredients </label>
+                    <ul>
+                        {% for line in recipe.ingredients%}
+                        <li>
+                            {{line}}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <label for="Instruction">Instructions </label>
+                    <p><a href={{recipe.instruction}} target="_blank">View Instructions here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}
