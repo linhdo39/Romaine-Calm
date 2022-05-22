@@ -3,14 +3,17 @@
 <!doctype html>
 <html lang="en">
 
+<head>
+    <style>
+        legend {
+            width: 50px;
+            padding: 2px;
+            margin-left: calc(50% -  - 8px);
+        }
+    </style>
+</head>
+
 <body>
-    <div class="recipeentry" style="width:95%;">
-<!doctype html>
-<html lang="en">
-
-<head></head>
-
-<body align="center">
     <div class="recipeentry" style="width:75%;margin: auto;">
         <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
@@ -99,16 +102,17 @@
                         </textarea>
                     </div>
                 </div>
+                <div>
+                    <br />
+                    <div style="height:50px;">
+                        <span style="float:left;"><input type="submit" id="finalbutton"
+                                class="btn btn-lg btn-primary btnstateless" data-loading-text="Whisking and folding..."
+                                value="Submit" style="margin-bottom:20px;"></span>
+                    </div>
+                </div>
 
             </fieldset>
-            <div>
-                <br />
-                <div style="height:50px;">
-                    <span style="float:left;"><input type="submit" id="finalbutton"
-                            class="btn btn-lg btn-primary btnstateless" data-loading-text="Whisking and folding..."
-                            value="Submit" style="margin-bottom:20px;"></span>
-                </div>
-            </div>
+
         </form>
     </div>
     </div>
@@ -116,4 +120,3 @@
 
 </html>
 {% endblock %}
-</html>
