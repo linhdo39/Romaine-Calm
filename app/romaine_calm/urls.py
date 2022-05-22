@@ -32,7 +32,6 @@ from recipes.views import all_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage_view, name= 'home'),
-    path('home/', homepage_view, name= 'home'),
     path('help/', help_view, name ='help'),
     path('register/', v.register, name="register"),
     path('recipes/', all_view, name= "recipes"),
