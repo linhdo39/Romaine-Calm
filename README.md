@@ -11,5 +11,6 @@ ___
 - Install Requests: pip install requests
 - Install corsheaders: pip install djangorestframework django-cors-headers
 - Install cripsy-form: pip install --user django-crispy-forms
+- Install python -m pip install Pillow
 - For Mac user, in recipes/models.py, comment out the first line (from asyncio.windows_events import NULL)
 - python manage.py runserver
