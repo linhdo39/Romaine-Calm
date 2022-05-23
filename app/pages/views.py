@@ -3,7 +3,10 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views import generic
 from .models import Profile
+from .forms import EditProfileForm
 # Create your views here.
 
 # HOMEPAGE
@@ -75,3 +78,11 @@ def redirect_logout(response):
 def redirect_register(response):   
     response = redirect('register/')
     return response
+
+class UserEditView(generic.UpdateView):
+    form_class = EditProfileForm
+    template_name = "pages/edit_settings.html"
+    success_url = reverse_lazy("home")
+
+    def get_object(self):
+        return self.request.user
