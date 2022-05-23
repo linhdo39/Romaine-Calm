@@ -42,9 +42,11 @@ def ingredient_view(request):
 
 def add_ingredient(request):
     ingredient_list = Ingredients.objects.filter(user = request.user.id)
+    print(request.POST.get('name'))
+    print(request.POST.get('amount'))
     if request.POST.get('name') and request.POST.get('amount'):
         ingredient = Ingredients (
-            user=  request.user.id,
+            user=  request.user,
             ingredient_name= request.POST.get('name'),
             ingredient_quantity= request.POST.get('amount')
         )
