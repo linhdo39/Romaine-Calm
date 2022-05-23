@@ -7,11 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Ingredients</title>
     <style>
-        #nameDiv{
-            margin-top: 50px;
-        }
 
-        .input{
+        #decorate_input{
             font-size: 20px;
             color:  #808080;
             font-weight: 700;
@@ -19,7 +16,7 @@
             margin: 15px;
         }
 
-        input.a {
+        #decorate_btn {
             width: 130px;
             height: 40px;
             font-size: 20px;
@@ -63,9 +60,9 @@
        <div id="container" align="center">
         <form action="" method="POST">
             {% csrf_token %}
-            <div id="nameDiv" class="input">Ingredient <input id="name" type="text"/></div>
-            <div class="input">Amount <input id="amount" type="number"/></div>
-            <input class ="a" type="submit" value ="Add">
+            <div id="decorate_input">Ingredient <input name="name" type="text"/></div>
+            <div id="decorate_input">Amount <input name="amount" type="text"/></div>
+            <input id="decorate_btn" type="submit" value ="Add">
         </form>
         <table id="display">
             <tr>
