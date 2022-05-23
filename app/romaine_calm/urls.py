@@ -17,7 +17,7 @@ from argparse import Namespace
 from django.urls import include
 from django.contrib import admin
 from django.urls import path
-from pages.views import about_view, redirect_register
+from pages.views import about_view
 from pages.views import homepage_view
 from pages.views import help_view
 from pages import views as user_views
@@ -33,6 +33,8 @@ from recipes.views import index_view
 from recipes.views import all_view
 from django.conf import settings
 from django.conf.urls.static import static
+from pages.views import UserEditView
+from register.views import PasswordChangeView
 
 urlpatterns = [
     path('admin', admin.site.urls),
@@ -44,6 +46,8 @@ urlpatterns = [
     path('recipes/<id>', index_view),
     path('', include('django.contrib.auth.urls')),
     path('profile/', user_views.profile, name= 'profile'),
+     path('edit_settings', UserEditView.as_view(), name='edit_settings'),
+    path('password/',  PasswordChangeView.as_view(template_name='registration/change-password.html')),
     path('about/', about_view, name= 'about'),
     path('news/', news_view, name= 'news'),
     path('contact/', contact_view, name= 'contact'),
