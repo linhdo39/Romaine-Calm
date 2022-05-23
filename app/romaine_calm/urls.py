@@ -25,7 +25,8 @@ from pages.views import news_view
 from pages.views import contact_view
 from pages.views import add_recipe_view
 from pages.views import favorite_view
-from pages.views import redirect_view
+from pages.views import redirect_login
+from pages.views import redirect_logout
 from register import views as v
 from recipes.views import index_view
 from recipes.views import all_view
@@ -47,8 +48,8 @@ urlpatterns = [
     path('contact/', contact_view, name= 'contact'),
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
     path('favorite/', favorite_view, name= 'favorite'),
-    path('login', redirect_view, name = 'login'),
-    path('logout', redirect_view, name = 'logout')
+    path('login', redirect_login),
+    path('logout', redirect_logout)
 ]
 
 if settings.DEBUG:
