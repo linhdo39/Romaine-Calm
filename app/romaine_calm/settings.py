@@ -144,4 +144,4 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', '127.0.0.1', 'scr-rivendell.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1:8000', '127.0.0.1', 'romaine-calm.herokuapp.com']
