@@ -1,10 +1,15 @@
 from django.http import HttpRequest, HttpResponse
+import os
 from django.shortcuts import render
 from django.http import HttpRequest
 from .models import Recipe, FavoriteRecipe
-from recipes.info import APP_ID
-from recipes.info import APP_KEY
 import requests
+from dotenv import load_dotenv
+load_dotenv()
+
+APP_ID = os.getenv('APP_ID')
+APP_KEY = os.getenv('APP_KEY')
+
 # Create your views here.
 
 def all_view(response):
