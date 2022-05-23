@@ -1,0 +1,28 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+<title>Romaine Calm</title>
+
+<body>
+    <div class="jumbotron homepage-hero hidden-m">
+        <div class="homepage-hero-content">
+                <!-- Display list of recipes to choose from-->
+                <div>
+                    
+                    {% for name in ingredient_list%}     
+                    <ul class ='b' style="background-color: rgb(206, 205, 205);">                       
+                        <li>{{name.ingredient_name}}</a></li>
+                        <br>
+                    </ul>
+                    {% endfor %}      
+                </div>
+        </div>
+    </div>
+        
+    
+</body>
+</html>
+
+{% endblock %}
