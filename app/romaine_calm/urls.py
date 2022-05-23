@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from argparse import Namespace
+from re import template
 from django.urls import include
 from django.contrib import admin
 from django.urls import path
@@ -30,6 +31,9 @@ from recipes.views import index_view
 from recipes.views import all_view
 from django.conf import settings
 from django.conf.urls.static import static
+from pages.views import UserEditView
+from register.views import PasswordChangeView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,11 +45,13 @@ urlpatterns = [
     path('recipes/<id>', index_view),
     path('', include('django.contrib.auth.urls')),
     path('profile/', user_views.profile, name= 'profile'),
+    path('edit_settings', UserEditView.as_view(), name='edit_settings'),
+    path('password/',  PasswordChangeView.as_view(template_name='registration/change-password.html')),
     path('about/', about_view, name= 'about'),
     path('news/', news_view, name= 'news'),
     path('contact/', contact_view, name= 'contact'),
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
-    path('favorite/', favorite_view, name= 'favorite')
+    path('favorite/', favorite_view, name= 'favorite'),
 
 ]
 

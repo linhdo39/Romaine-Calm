@@ -2,7 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views import generic
+from .forms import EditProfileForm
 # Create your views here.
 
 # HOMEPAGE
@@ -52,3 +56,12 @@ def add_recipe_view(response):
 
 def help_view(response):
     return render(response, "pages/soon.html", {})
+
+
+class UserEditView(generic.UpdateView):
+    form_class = EditProfileForm
+    template_name = "pages/edit_settings.html"
+    success_url = reverse_lazy("home")
+
+    def get_object(self):
+        return self.request.user
