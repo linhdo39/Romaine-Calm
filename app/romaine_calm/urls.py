@@ -17,7 +17,7 @@ from argparse import Namespace
 from django.urls import include
 from django.contrib import admin
 from django.urls import path
-from pages.views import about_view
+from pages.views import about_view, redirect_register
 from pages.views import homepage_view
 from pages.views import help_view
 from pages import views as user_views
@@ -27,6 +27,7 @@ from pages.views import add_recipe_view
 from pages.views import favorite_view
 from pages.views import redirect_login
 from pages.views import redirect_logout
+from pages.views import redirect_register
 from register import views as v
 from recipes.views import index_view
 from recipes.views import all_view
@@ -49,7 +50,8 @@ urlpatterns = [
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
     path('favorite/', favorite_view, name= 'favorite'),
     path('login', redirect_login),
-    path('logout', redirect_logout)
+    path('logout', redirect_logout),
+    path('register', redirect_register)
 ]
 
 if settings.DEBUG:
