@@ -20,7 +20,7 @@ from django.urls import path
 from pages.views import about_view
 from pages.views import homepage_view
 from pages.views import help_view
-from pages.views import profile_view
+from pages import views as user_views
 from pages.views import news_view
 from pages.views import contact_view
 from pages.views import add_recipe_view
@@ -28,6 +28,8 @@ from pages.views import favorite_view
 from register import views as v
 from recipes.views import index_view
 from recipes.views import all_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,7 +40,7 @@ urlpatterns = [
     path('recipes/', all_view, name= "recipes"),
     path('recipes/<id>', index_view),
     path('', include('django.contrib.auth.urls')),
-    path('profile/', profile_view, name= 'profile'),
+    path('profile/', user_views.profile, name= 'profile'),
     path('about/', about_view, name= 'about'),
     path('news/', news_view, name= 'news'),
     path('contact/', contact_view, name= 'contact'),
@@ -46,3 +48,6 @@ urlpatterns = [
     path('favorite/', favorite_view, name= 'favorite')
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
