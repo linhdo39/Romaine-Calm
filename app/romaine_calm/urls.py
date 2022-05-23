@@ -32,7 +32,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('', homepage_view, name= 'home'),
     path('home/', homepage_view, name= 'home'),
     path('help/', help_view, name ='help'),
@@ -45,7 +45,8 @@ urlpatterns = [
     path('news/', news_view, name= 'news'),
     path('contact/', contact_view, name= 'contact'),
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
-    path('favorite/', favorite_view, name= 'favorite')
+    path('favorite/', favorite_view, name= 'favorite'),
+    path('login', v.login_required)
 
 ]
 
