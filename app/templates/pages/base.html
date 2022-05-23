@@ -35,9 +35,10 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <div class="navbar-nav mr-auto">
-                          <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
-                          <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
-                           <a class="nav-link" href="{% url 'recipes' %}">Find Recipe</a>
+                            <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{% url 'recipes' %}">Find Recipe</a>
+                            <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
+                            <a class="nav-link" href="/add_ingredient/">Add Ingredient</a>
                             <a class="nav-link" href="{% url 'help' %}">Help</a>
                       </div>
                       <div class="btn-group">
@@ -47,7 +48,8 @@
                         <div class="dropdown-menu">
                           <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
                           <a class="dropdown-item" href="{% url 'edit_settings' %}">Edit Settings</a>
-                          <a class="dropdown-item" href="{% url 'favorite' %}">Favorite</a>
+                          <a class="dropdown-item" href="{% url 'favorite' %}">My Favorite</a>
+                          <a class="dropdown-item" href="/pantry/">My Pantry</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="/logout">Logout</a>
                         </div>
