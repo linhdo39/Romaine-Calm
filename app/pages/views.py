@@ -71,3 +71,7 @@ def redirect_login(response):
 def redirect_logout(response):   
     response = redirect('logout/')
     return response
+
+def redirect_register(response):   
+    response = redirect('register/')
+    return response
