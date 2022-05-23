@@ -3,12 +3,22 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
+from .models import Profile
 # Create your views here.
 
 # HOMEPAGE
 def homepage_view(response):
     #return HttpResponse("<h1>HomePage</h1>")
     return render(response, "pages/home.html", {})
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        if request.user.userprofile is None:
+            user_profile = Profile(user=request.user)
+            user_profile.save
+    return render(request, 'users/profile.html')
 
 @login_required
 def profile(request):
@@ -22,6 +32,7 @@ def profile(request):
                 messages.success(request, f' Your account has been updated!')
                 return redirect("profile")
     else:
+            Profile.objects.get_or_create(user=request.user)
             u_form = UserUpdateForm(instance=request.user)
             p_form = ProfileUpdateForm(instance=request.user.profile)
 
