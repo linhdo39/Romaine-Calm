@@ -1,0 +1,86 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Ingredients</title>
+    <style>
+        #nameDiv{
+            margin-top: 50px;
+        }
+
+        .input{
+            font-size: 20px;
+            color:  #808080;
+            font-weight: 700;
+            font-family: cursive;
+            margin: 15px;
+        }
+
+        input.a {
+            width: 130px;
+            height: 40px;
+            font-size: 20px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            background-color: gray;
+            color: whitesmoke;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 50px auto;
+            background-color: #D3D3D3;
+        }
+
+        table, th, td {
+            border: 2px solid white;
+            padding: 5px;
+        }
+
+        th{
+            font-size: 20px;
+            font-weight: 700;
+            font-family: cursive;
+            color:  gray;
+
+        }
+        td{
+            font-size: 14px;
+            color:  gray;
+            font-weight: 400;
+            font-family: Georgia;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron" style ="padding: 1rem 1rem;">
+       <div id="container" align="center">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div id="nameDiv" class="input">Ingredient <input id="name" type="text"/></div>
+            <div class="input">Amount <input id="amount" type="number"/></div>
+            <input class ="a" type="submit" value ="Add">
+        </form>
+        <table id="display">
+            <tr>
+                <th>Ingredient</th>
+                <th>Amount</th>
+            </tr>
+            {% for ingredient in ingredient_list%}     
+            <tr>
+                <th>{{ingredient.ingredient_name}}</th>
+                <th>{{ingredient.ingredient_quantity}}</th>
+            </tr>
+            {% endfor %}   
+        </table>
+    </div>
+</body>
+
+</html>
+{% endblock %}
