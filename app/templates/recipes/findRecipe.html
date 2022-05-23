@@ -6,7 +6,7 @@
 <title>Romaine Calm</title>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="width:45%;margin: auto;">
         <div class="container">
             <div class="jumbotron homepage-hero hidden-xs">
                 <div class="homepage-hero-content">
@@ -14,7 +14,7 @@
                         <div>
                             
                             {% for recipe in recipe_list%}     
-                            <ul class ='b'>                       
+                            <ul class ='b' style="background-color: rgb(206, 205, 205);">                       
                                 <li><a href= {{recipe.recipe_id}}>{{recipe.name}}</a></li>
                                 <br>
                             </ul>
@@ -24,6 +24,7 @@
             </div>
         </div>
     </div>
+    
 </body>
 </html>
 
