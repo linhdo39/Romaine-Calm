@@ -2,7 +2,7 @@ from django.http import HttpRequest, HttpResponse
 import os
 from django.shortcuts import render
 from django.http import HttpRequest
-from .models import Recipe, FavoriteRecipe#, Ingredients
+from .models import Recipe, FavoriteRecipe, Ingredients
 import requests
 #from dotenv import load_dotenv
 #load_dotenv()
@@ -36,10 +36,20 @@ def favorite_view(response,id):
     favorite_list = FavoriteRecipe.objects.get(id)
     return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
 
-'''def ingredient_view(response,id):
-    ingredient_list = Ingredients.objects.get(id)
-    return render(response, "pages/ingredients.html", {'ingredient_list': ingredient_list})
+def ingredient_view(request):
+    ingredient_list = Ingredients.objects.filter(user = request.user.id)
+    return render(request, "recipes/ingredients.html", {'ingredient_list': ingredient_list})
 
-def add_ingredient(response,id):
-    ingredient_list = Ingredients.objects.get(id)
-    return render(response, "pages/ingredients.html", {'ingredient_list': ingredient_list})'''
+def add_ingredient(request):
+    ingredient_list = Ingredients.objects.filter(user = request.user.id)
+    if request.POST.get('name') and request.POST.get('amount'):
+        ingredient = Ingredients (
+            user=  request.user.id,
+            ingredient_name= request.POST.get('name'),
+            ingredient_quantity= request.POST.get('amount')
+        )
+        ingredient.save()
+        ingredient_list = Ingredients.objects.filter(user = request.user.id)
+        return render(request, 'recipes/addIngredient.html',{'ingredient_list': ingredient_list})  
+    else:
+        return render(request,'recipes/addIngredient.html', {'ingredient_list': ingredient_list})
