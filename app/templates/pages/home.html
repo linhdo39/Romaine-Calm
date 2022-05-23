@@ -14,7 +14,7 @@
 </head>
 <title>Romaine Calm</title>
 
-<body align=" center"> 
+<body align=" center">
     <div class="recipeentry" style="width:75%;margin: auto;">
         <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
@@ -36,25 +36,28 @@
                 <div></div>
                 <div>
                     <div>
-                        <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} />
-
+                        <img width="320" height="300" alt={{recipe.name}} src="{{recipe.image}}" />
                     </div>
                 </div>
-                <br>
                 <div>
+                    <div>
+                        <button type="button">Like</button>
+                        <button type="button">Dislike</button>
+                    </div>
+                </div>
+                <!-- <div>
                     <b><label for="Ingredient">Ingredient </label></b>
                     <ul class='a'>
                         {% for line in recipe.ingredients%}
                         <li class='b'> {{line}} </li>
                         {% endfor %}
                     </ul>
-                </div>
-                <br>
-                <div>
-                    
+                </div> -->
+                <!-- <div>
+
                     <b><label for="Instruction"> <a href={{recipe.instruction}} target="_blank">View Instructions
                                 here</a></label></b>
-                </div>
+                </div> -->
             </fieldset>
             <div>
                 <br />
