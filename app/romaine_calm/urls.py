@@ -31,6 +31,8 @@ from pages.views import redirect_register
 from register import views as v
 from recipes.views import index_view
 from recipes.views import all_view
+from recipes.views import add_ingredient
+from recipes.views import ingredient_view
 from django.conf import settings
 from django.conf.urls.static import static
 from pages.views import UserEditView
@@ -53,6 +55,8 @@ urlpatterns = [
     path('contact/', contact_view, name= 'contact'),
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
     path('favorite/', favorite_view, name= 'favorite'),
+    path('pantry/', ingredient_view, name= 'ingredient_view'),
+    path('add_ingredient/', add_ingredient, name= 'add_Ingredient'),
     path('login', redirect_login),
     path('logout', redirect_logout),
     path('register', redirect_register)
