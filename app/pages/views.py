@@ -17,13 +17,13 @@ def favorite_view(response):
     return render(response, "pages/favorite.html", {})
 
 def about_view(response):
-    return render(response, "pages/soon.html", {})
+    return render(response, "pages/aboutUs.html", {})
 
 def news_view(response):
     return render(response, "pages/soon.html", {})
 
 def contact_view(response):
-    return render(response, "pages/soon.html", {})
+    return render(response, "pages/contactUs.html", {})
 
 def add_recipe_view(response):
     return render(response, "pages/addUserRecipe.html", {})
