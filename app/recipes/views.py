@@ -2,7 +2,7 @@ from django.http import HttpRequest, HttpResponse
 import os
 from django.shortcuts import render
 from django.http import HttpRequest
-from .models import Recipe, FavoriteRecipe
+from .models import Recipe, FavoriteRecipe#, Ingredients
 import requests
 from dotenv import load_dotenv
 load_dotenv()
@@ -34,4 +34,12 @@ def index_view(response,id):
 
 def favorite_view(response,id):
     favorite_list = FavoriteRecipe.objects.get(id)
-    return render(response, "pages/Favorite.html", {'favorite_list': favorite_list})
+    return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
+
+'''def ingredient_view(response,id):
+    ingredient_list = Ingredients.objects.get(id)
+    return render(response, "pages/ingredients.html", {'ingredient_list': ingredient_list})
+
+def add_ingredient(response,id):
+    ingredient_list = Ingredients.objects.get(id)
+    return render(response, "pages/ingredients.html", {'ingredient_list': ingredient_list})'''
