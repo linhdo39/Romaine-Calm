@@ -26,65 +26,67 @@
     <!doctype html>
 
     <body>
-        {% if user.is_authenticated %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">         
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"> </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
-                <a class="nav-link" href="{% url 'recipes' %}">Find Recipe</a>
-                <a class="nav-link" href="{% url 'help' %}">Help</a>
-            </div>
-            
-            <div class="navbar-nav mr-auto" class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" >
-                    <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
-                    <a class="dropdown-item" href="{% url 'edit_settings' %}">Edit Settings</a>
-                    <a class="dropdown-item" href="{% url 'favorite' %}">Favorite</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout">Logout</a>
-                </div>
-            </div>
-        
-        </nav>
-        {% else %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"> </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
-                <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
-                <a class="nav-link" href="{% url 'recipes' %}">Find Recipe</a>
-                <a class="nav-link" href="{% url 'help' %}">Help</a>
-            </div>
-        </nav>
-        {% endif %}
         <div class="jumbotron" style ="padding: 1rem 1rem;">
-                    <div class="homepage-hero-content">
-                        <h1 class="text-shadow hometitle centered"
-                            style="color:#fff; font-weight: bold; text-align: center;">
-                            Romaine
-                            Calm</h1>
-                        <!--<div>
-                                <form role="search">
-                                    <div class="input-group"
-                                        style="background-color: #ffffff;border-radius:5px; z-index:0 !important;">
-                                        <input type="text" class="typeahead search-input-button" id="txtSearch1"
-                                            placeholder="Search recipes" autofocus=""
-                                            style="text-indent: 4px;font-size: 21px;padding-left: 12px;z-index:1000; width:100% !important">
-                                    </div>
-                                </form>
-                            </div>
-                        -->
+            <div class="homepage-hero-content">
+                {% if user.is_authenticated %}
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"> </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <div class="navbar-nav mr-auto">
+                          <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
+                           <a class="nav-link" href="{% url 'recipes' %}">Find Recipe</a>
+                            <a class="nav-link" href="{% url 'help' %}">Help</a>
+                      </div>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Profile
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
+                          <a class="dropdown-item" href="{% url 'edit_settings' %}">Edit Settings</a>
+                          <a class="dropdown-item" href="{% url 'favorite' %}">Favorite</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="/logout">Logout</a>
+                        </div>
+                      </div>
                     </div>
-                </div>
+                  </nav>
+                {% else %}
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-nav mr-auto">
+                                <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{% url 'news' %}">News</a>
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                                <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </div>
+                            <div class="navbar-nav">
+                                <a class="nav-link" href="/login">Login</a>
+                        </div>
+                    </div>
+                  </nav>
+                {% endif %}
+
+                <h1 class="text-shadow hometitle centered"
+                    style="color:#fff; font-weight: bold; text-align: center;">
+                    Romaine
+                    Calm</h1>
+                <!--<div>
+                        <form role="search">
+                            <div class="input-group"
+                                style="background-color: #ffffff;border-radius:5px; z-index:0 !important;">
+                                <input type="text" class="typeahead search-input-button" id="txtSearch1"
+                                    placeholder="Search recipes" autofocus=""
+                                    style="text-indent: 4px;font-size: 21px;padding-left: 12px;z-index:1000; width:100% !important">
+                            </div>
+                        </form>
+                    </div>
+                -->
             </div>
+        </div>
     </body>
 
 </html>
