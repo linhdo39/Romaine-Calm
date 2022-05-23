@@ -7,18 +7,17 @@
 
 <body>
     <div class="jumbotron" style ="padding: 1rem 1rem;">
-        <div class="homepage-hero-content">
-                <!-- Display list of recipes to choose from-->
-                <div>
-                    
-                    {% for recipe in recipe_list%}     
-                    <ul class ='b' style="background-color: rgb(206, 205, 205);">                       
-                        <li><a href= {{recipe.recipe_id}}>{{recipe.name}}</a></li>
-                        <br>
-                    </ul>
-                    {% endfor %}      
-                </div>
+       <!-- Display list of recipes to choose from-->
+        <div>
+            
+            {% for recipe in recipe_list%}     
+            <ul class ='b' style="background-color: rgb(206, 205, 205);">                       
+                <li><a href= {{recipe.recipe_id}}>{{recipe.name}}</a></li>
+                <br>
+            </ul>
+            {% endfor %}      
         </div>
+       
     </div>
       
     
