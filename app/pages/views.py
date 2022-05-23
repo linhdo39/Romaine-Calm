@@ -64,10 +64,10 @@ def add_recipe_view(response):
 def help_view(response):
     return render(response, "pages/soon.html", {})
 
-def redirect_view(response, name):
-    if name == "login":
-        response = redirect('login/')
-        return response
-    else:
-        response = redirect('logout/')
-        return response
+def redirect_login(response):
+    response = redirect('login/')
+    return response
+
+def redirect_logout(response):   
+    response = redirect('logout/')
+    return response
