@@ -68,6 +68,6 @@ def redirect_view(response, name):
     if name == "login":
         response = redirect('login/')
         return response
-    else
+    else:
         response = redirect('logout/')
         return response
