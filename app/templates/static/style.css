@@ -1,3 +1,70 @@
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 300px;
+	margin: auto;
+	padding: 16px;
+	text-align: center;
+	font-family: arial;
+	background-color: #f1f1f1;
+}
+
+
+.card button {
+	border: none;
+	outline: 0;
+	padding: 12px;
+	color: rgb(16, 16, 16);
+	background-color: rgba(0, 0, 0, 0.29);
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	font-size: 18px;
+}
+
+.card button:hover {
+	opacity: 0.7;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	max-width: 960px;
+	margin: auto;
+	
+
+}
+
+/* Float four columns side by side */
+.column {
+	float: left;
+	width: 25%;
+	padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+	margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;
+		display: block;
+		margin-bottom: 20px;
+	}
+}
 .homepage-hero-content {
 	margin: 0 auto;
 }
@@ -47,7 +114,7 @@ ul {
 	padding: 0;
 	overflow: hidden;
 	border: 1px solid #e7e7e7;
-	background-color: #f3f3f3;
+	background-color: #d9d9d9;
 }
 
 ul.a {
@@ -62,12 +129,11 @@ ul.a {
 
 ul.b {
 	list-style-type: none;
-	margin: auto;
+	margin: 0;
 	padding: 0;
 	overflow: hidden;
 	border: 1px solid transparent;
 	background-color: transparent;
-	text-align: center;
 }
 
 li {
@@ -111,7 +177,7 @@ li.a.active {
 	border: none;
 	outline: 0;
 	padding: 12px;
-	color: rgb(16, 16, 16);
+	color: rgba(16, 16, 16, 0.078);
 	background-color: rgba(0, 0, 0, 0.29);
 	text-align: center;
 	cursor: pointer;
@@ -158,14 +224,3 @@ li.a.active {
 		margin-bottom: 20px;
 	}
 }
-
-.account-img {
-	height: 125px;
-	width: 125px;
-	margin-right: 20px;
-	margin-bottom: 16px;
-  }
-
-  .account-heading {
-	font-size: 2.5rem;
-  }
