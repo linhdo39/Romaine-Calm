@@ -27,6 +27,14 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        align-items: center;
+    }
+
+
+    table,
+    tr,
+    td {
+        border: 1px solid black;
     }
 </style>
 
@@ -38,30 +46,39 @@
                 <legend>
                     <h3>Contact Us</h3>
                 </legend>
-                <div></div>
-                <div style="width:70%;">
-                    <div style="width:100%;">
+
+                <div>
+                    <div>
                         <a name="dataEntry"></a>
-                        <div class="form-group" style="width:100%;">
-                            <label for="fname">First Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-                            <label for="lname">Last Name</label>
-                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email..">
-
-                            <label for="subject">Subject</label>
-                            <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                        <div class="form-group">
+                            <table align="center">
+                                <tr>
+                                    <td> <label for="fname">First Name</label></td>
+                                    <td> <input type="text" id="fname" name="firstname" placeholder="Your name.."></td>
+                                </tr>
+                                <tr>
+                                    <td> <label for="lname">Last Name</label></td>
+                                    <td><input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <label for="email">Email</label></td>
+                                    <td><input type="email" id="email" name="email" placeholder="Your Email.."></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="subject">Subject</label></td>
+                                    <td><textarea id="subject" name="subject"
+                                            placeholder="Write something.."></textarea></td>
+                                </tr>
+                                <th colspan="2" align="center">
+                                    <td><input type="submit" value="Submit"></td>
+                                </th>
+                            </table>
                         </div>
                     </div>
                 </div>
             </fieldset>
-            <input type="submit" value="Submit" align="center">
         </form>
-    </div>
-    </div>
 </body>
 
 </html>
