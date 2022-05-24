@@ -15,7 +15,11 @@
 <title>Romaine Calm</title>
 
 <body align=" center">
+<<<<<<< HEAD
     <div class="jumbotron" style ="padding: 1rem 1rem;">
+=======
+    <div class="recipeentry" style="width:75%;margin: auto;">
+>>>>>>> Twinkle-Branch
         <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
                 <div>
@@ -28,6 +32,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <br />
                 <br />
                 <div></div>
@@ -55,18 +60,37 @@
                     <b><label for="Instruction"> <a href={{recipe.instruction}} target="_blank">View Instructions
                                 here</a></label></b>
                 </div> -->
-            </fieldset>
-            <div>
-                <br />
-            </div>
-        </form>
-    </div>
+=======
+                <div class="row">
+                    <table align="center">
+                        <tr>
+                            <td>
 
-    </div>
-    </div>
+                                <input type="image" src="../static/Image/unlike.jpg" name="submit" width="48"
+                                    height="48" alt="unlike" />
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <img width="320" height="300" alt={{recipe.name}} src="{{recipe.image}}" />
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+
+                                <input type="image" src="../static/Image/like.jpg" name="submit" width="48" height="48"
+                                    alt="like" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+>>>>>>> Twinkle-Branch
+            </fieldset>
+        </form>
     </div>
 </body>
 
 </html>
-
 {% endblock %}
