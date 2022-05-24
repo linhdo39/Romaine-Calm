@@ -14,5 +14,6 @@ ___
 - Install corsheaders: pip install djangorestframework django-cors-headers
 - Install cripsy-form: pip install --user django-crispy-forms
 - Install python -m pip install Pillow
+- Install pip install whitenoise
 - For Mac user, in recipes/models.py, comment out the first line (from asyncio.windows_events import NULL)
 - python manage.py runserver
