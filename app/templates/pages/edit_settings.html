@@ -1,0 +1,18 @@
+
+{% extends 'pages/base.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<body>
+<div class="jumbotron" style ="padding: 1rem 1rem;">
+        {{ user.profile.bio }}
+        <div class="form-group">
+            <form method="POST" >
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-secondary">Update Settings</button>
+            </form>
+        </div>
+</div>
+</body>
+{% endblock %}

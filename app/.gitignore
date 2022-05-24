@@ -6,6 +6,6 @@
 *.pot
 *.pyc
 pycache
-media
 recipes/info.py
 recipes/migrations
+.env
