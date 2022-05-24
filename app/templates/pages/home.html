@@ -31,45 +31,35 @@
                         </div>
                     </div>
                 </div>
-                <br />
-                <br />
-                <div></div>
-                <div>
-                    <div>
-                        <img width="320" height="300" alt={{recipe.name}} src="{{recipe.image}}" />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <button type="button">Like</button>
-                        <button type="button">Dislike</button>
-                    </div>
-                </div>
-                <!-- <div>
-                    <b><label for="Ingredient">Ingredient </label></b>
-                    <ul class='a'>
-                        {% for line in recipe.ingredients%}
-                        <li class='b'> {{line}} </li>
-                        {% endfor %}
-                    </ul>
-                </div> -->
-                <!-- <div>
+                <div class="row">
+                    <table align="center">
+                        <tr>
+                            <td>
 
-                    <b><label for="Instruction"> <a href={{recipe.instruction}} target="_blank">View Instructions
-                                here</a></label></b>
-                </div> -->
+                                <input type="image" src="../static/Image/unlike.jpg" name="submit" width="48"
+                                    height="48" alt="unlike" />
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <img width="320" height="300" alt={{recipe.name}} src="{{recipe.image}}" />
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+
+                                <input type="image" src="../static/Image/like.jpg" name="submit" width="48" height="48"
+                                    alt="like" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </fieldset>
-            <div>
-                <br />
-            </div>
         </form>
-    </div>
-
-    </div>
-    </div>
     </div>
 </body>
 
 </html>
-
 {% endblock %}
