@@ -11,67 +11,19 @@
             <fieldset>
                 <div>
                 </div>
+                {% for favorite in favorite_list%}  
                 <div class="row">
                     <div class="column">
                         <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
+                            <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} />
+                            <p> {{recipe.name}} </p>
+                            <p><a href={{recipe.instruction}} target="_blank"><button>View Recipe</button></a></p>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}  
+            </fieldset>
+        </form>
     </div>
     </fieldset>
 
