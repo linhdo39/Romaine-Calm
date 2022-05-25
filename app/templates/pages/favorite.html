@@ -6,24 +6,22 @@
 <body align="center">
 
     <div class="jumbotron" style ="padding: 1rem 1rem;">
-        <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
-            <fieldset>
-                <div>
-                </div>
-                <div class="row">
-                {% for favorite in favorite_list%}
-                    <div class="column">
-                        <div class="card">
-                            <img  alt={{favorite.name}} src={{favorite.image}} style="width:100%">
-                            <p> {{recipe.name}} </p>
-                            <p ><a  href={{favorite.instruction}} target="_blank"><button >View Recipe</button></a></p>
-                        </div>
-                        <p></p>
+        <fieldset>
+            <div>
+            </div>
+            <div class="row">
+            {% for favorite in favorite_list%}
+                <div class="column">
+                    <div class="card">
+                        <img  alt={{favorite.name}} src={{favorite.image}} style="width:100%">
+                        <p> {{recipe.name}} </p>
+                        <p ><a  href={{favorite.instruction}} target="_blank"><button >View Recipe</button></a></p>
                     </div>
-                {% endfor %}  
+                    <p></p>
                 </div>
-            </fieldset>
-        </form>
+            {% endfor %}  
+            </div>
+        </fieldset>
     </div>
     </fieldset>
 
