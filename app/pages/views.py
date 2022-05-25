@@ -95,9 +95,6 @@ def profile(request):
     return render(request, "pages/myProfile.html", context)
 
 
-def favorite_view(response):
-    return render(response, "pages/favorite.html", {})
-
 def about_view(response):
     return render(response, "pages/aboutUs.html", {})
 
