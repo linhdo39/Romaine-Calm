@@ -39,10 +39,11 @@ def favorite_view(response):
     for item in list:
         id = item.recipe_id
         url = "https://api.edamam.com/api/recipes/v2/" + id+"?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
-        print(url)
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipe = r.json()   
+        if 'status' in recipe:
+            return render(response, "pages/favorite.html",{'favorite_list': favorite_list})
         output = {
             "uri": recipe["recipe"]["uri"],
             "name":recipe["recipe"]["label"],
@@ -52,8 +53,6 @@ def favorite_view(response):
             "instruction":recipe["recipe"]["url"],
         }
         favorite_list.append(output)
-    for item in favorite_list:
-        print(item)
     return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
 
 def ingredient_view(request):
