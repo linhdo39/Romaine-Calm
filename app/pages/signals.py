@@ -13,7 +13,7 @@ def create_profile(sender, instance, created, **kwargs):
 def save_profile(sender, instance, created, **kwargs):
     instance.profile.save()
     if Profile.objects.filter(user=instance).exists():
-        Profile.objects.get(user=instance).save()
+        Profile.objects.get_or_create(user=instance).save()
     else:
         profile = Profile (
             user = instance
