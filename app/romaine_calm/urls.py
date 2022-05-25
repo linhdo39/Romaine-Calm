@@ -27,7 +27,6 @@ from pages.views import add_recipe_view
 from pages.views import favorite_view
 from pages.views import redirect_login
 from pages.views import redirect_logout
-from pages.views import redirect_register
 from register import views as v
 from recipes.views import index_view
 from recipes.views import all_view
@@ -58,8 +57,7 @@ urlpatterns = [
     path('pantry/', ingredient_view, name= 'ingredient_view'),
     path('add_ingredient/', add_ingredient, name= 'add_Ingredient'),
     path('login', redirect_login),
-    path('logout', redirect_logout),
-    path('register', redirect_register)
+    path('logout', redirect_logout)
 ]
 
 if settings.DEBUG:
