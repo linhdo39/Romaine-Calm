@@ -3,7 +3,6 @@
 {% block content %}
 <!doctype html>
 <html lang="en">
-
 <body align="center">
 
     <div class="jumbotron" style ="padding: 1rem 1rem;">
@@ -12,66 +11,19 @@
                 <div>
                 </div>
                 <div class="row">
+                {% for favorite in favorite_list%}
                     <div class="column">
                         <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
+                            <img  alt={{favorite.name}} src={{favorite.image}} style="width:100%">
+                            <p> {{recipe.name}} </p>
+                            <p ><a  href={{favorite.instruction}} target="_blank"><button >View Recipe</button></a></p>
                         </div>
+                        <p></p>
                     </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
+                {% endfor %}  
                 </div>
-
-                <div class="row">
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="card">
-                            <img src="" alt="recipe image" style="width:100%">
-                            <p>Recipe Title.</p>
-                            <p><button>View Recipe</button></p>
-                        </div>
-                    </div>
-                </div>
+            </fieldset>
+        </form>
     </div>
     </fieldset>
 

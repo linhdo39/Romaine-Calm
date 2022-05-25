@@ -24,7 +24,6 @@ from pages import views as user_views
 from pages.views import news_view
 from pages.views import contact_view
 from pages.views import add_recipe_view
-from pages.views import favorite_view
 from pages.views import redirect_login
 from pages.views import redirect_logout
 from register import views as v
@@ -32,6 +31,7 @@ from recipes.views import index_view
 from recipes.views import all_view
 from recipes.views import add_ingredient
 from recipes.views import ingredient_view
+from recipes.views import favorite_view
 from django.conf import settings
 from django.conf.urls.static import static
 from pages.views import UserEditView
