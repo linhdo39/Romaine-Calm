@@ -1,8 +1,9 @@
+from tokenize import String
 from django.http import HttpRequest, HttpResponse
 import os
 from django.shortcuts import render
 from django.http import HttpRequest
-from .models import Recipe, FavoriteRecipe, Ingredients
+from .models import Recipe, Favorite, Ingredients
 import requests
 from dotenv import load_dotenv
 load_dotenv()
@@ -33,12 +34,12 @@ def index_view(response,id):
     return render(response, "recipes/individualRecipe.html", {'recipe': output})
 
 def favorite_view(response):
-    list = FavoriteRecipe.objects.filter(user = response.user.id)
+    list = Favorite.objects.filter(user = response.user.id)
     favorite_list=[]
     for item in list:
-        print(item.recipe_id)
-        print(item)
-        '''url = "https://api.edamam.com/api/recipes/v2/" + item.recipe_id+"?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
+        id = item.recipe_id
+        url = "https://api.edamam.com/api/recipes/v2/" + id+"?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
+        print(url)
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipe = r.json()   
@@ -50,7 +51,9 @@ def favorite_view(response):
             "ingredients":recipe["recipe"]["ingredientLines"],
             "instruction":recipe["recipe"]["url"],
         }
-        favorite_list.append(output)'''
+        favorite_list.append(output)
+    for item in favorite_list:
+        print(item)
     return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
 
 def ingredient_view(request):
