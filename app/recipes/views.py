@@ -32,8 +32,24 @@ def index_view(response,id):
     }
     return render(response, "recipes/individualRecipe.html", {'recipe': output})
 
-def favorite_view(response,id):
-    favorite_list = FavoriteRecipe.objects.get(id)
+def favorite_view(response):
+    list = FavoriteRecipe.objects.get(user = response.user.id)
+    print(list)
+    favorite_list=[]
+    for item in list:
+        url = "https://api.edamam.com/api/recipes/v2/" + id+"?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
+        r = requests.get(url, headers={'Content-Type':      
+        'application/json'})
+        recipe = r.json()   
+        output = {
+            "uri": recipe["recipe"]["uri"],
+            "name":recipe["recipe"]["label"],
+            "image":recipe["recipe"]["image"],
+            "yield":recipe["recipe"]["yield"],
+            "ingredients":recipe["recipe"]["ingredientLines"],
+            "instruction":recipe["recipe"]["url"],
+        }
+        favorite_list.append(output)
     return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
 
 def ingredient_view(request):
