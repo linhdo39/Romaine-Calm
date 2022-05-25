@@ -11,9 +11,8 @@ def create_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
 def save_profile(sender, instance, created, **kwargs):
-    instance.profile.save()
     if Profile.objects.filter(user=instance).exists():
-        Profile.objects.get_or_create(user=instance).save()
+        Profile.objects.get(user=instance).save()
     else:
         profile = Profile (
             user = instance
