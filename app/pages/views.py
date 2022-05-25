@@ -20,24 +20,27 @@ def profile(request):
     if request.method == 'POST':
         if request.user.userprofile is None:
             user_profile = Profile(user=request.user)
-            user_profile.save
+            user_profile.save()
     return render(request, 'users/profile.html')
 
 @login_required
 def profile(request):
     if request.method == 'POST':
-            u_form = UserUpdateForm(request.POST,instance=request.user)
-            p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
+        if request.user.userprofile is None:
+            user_profile = Profile(user=request.user)
+            user_profile.save()
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
 
-            if u_form.is_valid() and p_form.is_valid():
-                u_form.save()
-                p_form.save()
-                messages.success(request, f' Your account has been updated!')
-                return redirect("profile")
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f' Your account has been updated!')
+            return redirect("profile")
     else:
-            Profile.objects.get_or_create(user=request.user)
-            u_form = UserUpdateForm(instance=request.user)
-            p_form = ProfileUpdateForm(instance=request.user.profile)
+        Profile.objects.get_or_create(user=request.user)
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
         "u_form": u_form,
@@ -73,10 +76,6 @@ def redirect_login(response):
 
 def redirect_logout(response):   
     response = redirect('logout/')
-    return response
-
-def redirect_register(response):   
-    response = redirect('register/')
     return response
 
 class UserEditView(generic.UpdateView):
