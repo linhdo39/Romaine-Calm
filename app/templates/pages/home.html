@@ -16,7 +16,8 @@
 
 <body align=" center">
     <div class="recipeentry" style="width:75%;margin: auto;">
-        <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
+        <form action="/home/" method="post"> <input name="__RequestVerificationToken" type="hidden" /> <input name="submit" value={{r.recipe_id}} type="hidden" />
+            {% csrf_token %}
             <fieldset>
                 <div>
                 </div>
@@ -32,22 +33,18 @@
                     <table align="center">
                         <tr>
                             <td>
-
-                                <input type="image" src="../static/Image/unlike.jpg" name="submit" width="48"
+                                <input type="image" src="../static/Image/unlike.jpg" name="unlike" width="48"
                                     height="48" alt="unlike" />
-
                             </td>
                             <td></td>
                             <td></td>
                             <td>
-                                <img width="320" height="300" alt={{recipe.name}} src="{{recipe.image}}" />
-
+                                <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} />
                             </td>
                             <td></td>
                             <td></td>
                             <td>
-
-                                <input type="image" src="../static/Image/like.jpg" name="submit" width="48" height="48"
+                                <input type="image" name="like" src="../static/Image/like.jpg" width="48" height="48"
                                     alt="like" />
                             </td>
                         </tr>
@@ -57,6 +54,5 @@
         </form>
     </div>
 </body>
-
 </html>
 {% endblock %}

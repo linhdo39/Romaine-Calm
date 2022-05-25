@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from .models import Recipe, FavoriteRecipe, Ingredients
 import requests
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
@@ -44,7 +44,7 @@ def add_ingredient(request):
     ingredient_list = Ingredients.objects.filter(user = request.user.id)
     if request.POST.get('name') and request.POST.get('amount'):
         ingredient = Ingredients (
-            user=  request.user,
+            user =  request.user,
             ingredient_name= request.POST.get('name'),
             ingredient_quantity= request.POST.get('amount')
         )
