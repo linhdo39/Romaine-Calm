@@ -3,6 +3,17 @@
 {% block content %}
 <!doctype html>
 <html lang="en">
+<head>
+    <style>
+        #text {
+            display: block;
+            width: 180px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            }
+    </style>
+</head>
 <body align="center">
 
     <div class="jumbotron" style ="padding: 1rem 1rem;">
@@ -14,7 +25,7 @@
                 <div class="column">
                     <div class="card">
                         <img  alt={{favorite.name}} src={{favorite.image}} style="width:100%">
-                        <p maxlength="50"> {{favorite.name}} </p>
+                        <p><span id="text"> {{favorite.name}} </span></p>
                         <p ><a  href={{favorite.instruction}} target="_blank"><button >View Recipe</button></a></p>
                     </div>
                     <p></p>
