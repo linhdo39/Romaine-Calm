@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-from recipes.models import FavoriteRecipe
+from recipes.models import Favorite
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -35,10 +35,11 @@ def homepage_view(request):
         "ingredients":recipeJson["recipe"]["ingredientLines"],
         "instruction":recipeJson["recipe"]["url"],
     }
-    if request.method == 'POST' and 'like' in request.POST:
-        favorite = FavoriteRecipe(
+    print(request.POST)
+    if request.method == 'POST' and 'like.x' in request.POST:
+        favorite = Favorite(
             user = request.user,
-            recipe_id = Recipe.objects.get(recipe_id = request.POST.get('submit'))
+            recipe_id = id
         )
         favorite.save()
         return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe}) 
