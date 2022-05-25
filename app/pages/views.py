@@ -35,9 +35,7 @@ def homepage_view(request):
         "ingredients":recipeJson["recipe"]["ingredientLines"],
         "instruction":recipeJson["recipe"]["url"],
     }
-    
-    if request.method == 'POST':
-        print(request.POST.get('submit'))
+    if request.method == 'POST' and 'like' in request.POST:
         favorite = FavoriteRecipe(
             user = request.user,
             recipe_id = Recipe.objects.get(recipe_id = request.POST.get('submit'))
