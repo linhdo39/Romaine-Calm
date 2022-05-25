@@ -13,28 +13,30 @@
     </style>
 </head>
 <title>Romaine Calm</title>
-
+<div class="jumbotron" style ="padding: 1rem 1rem;">
 <body align=" center">
-    <div class="recipeentry" style="width:75%;margin: auto;">
+    {% if user.is_authenticated %}
+    <div class="recipeentry" >
         <form action="/home/" method="post"> <input name="__RequestVerificationToken" type="hidden" /> <input name="submit" value={{r.recipe_id}} type="hidden" />
             {% csrf_token %}
             <fieldset>
                 <div>
                 </div>
-                <div style="width:95%;">
+                <div>
                     <div>
                         <a name="dataEntry"></a>
-                        <div class="form-group" style="width:100%;">
-                            <label for="Title"> {{recipe.name}} </label><br />
+                        <div align="center" class="form-group" style="width:100%;">
+                            <h2> {{recipe.name}} </h2><br />
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <table align="center">
                         <tr>
+                            
                             <td>
-                                <input type="image" src="../static/Image/unlike.jpg" name="unlike" width="48"
-                                    height="48" alt="unlike" />
+                                <input type="image" name="like" src="../static/Image/like.jpg" width="48" height="48"
+                                alt="submit" />
                             </td>
                             <td></td>
                             <td></td>
@@ -44,8 +46,8 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="image" name="like" src="../static/Image/like.jpg" width="48" height="48"
-                                    alt="like" />
+                                <input name="unlike" type="image" src="../static/Image/unlike.jpg" width="48"
+                                    height="48" alt="submit" />
                             </td>
                         </tr>
                     </table>
@@ -53,6 +55,37 @@
             </fieldset>
         </form>
     </div>
+    {% else %}
+    <form action="/home/" method="post"> <input name="__RequestVerificationToken" type="hidden" /> <input name="submit" value={{r.recipe_id}} type="hidden" />
+        {% csrf_token %}
+        <fieldset>
+            <div>
+            </div>
+            <div style="width:95%;">
+                <div>
+                    <a name="dataEntry"></a>
+                    <div align="center" class="form-group" style="width:100%;">
+                        <h2> {{recipe.name}} </h2><br />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <table align="center">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} />
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+    {% endif %}
 </body>
+</div>
 </html>
 {% endblock %}
