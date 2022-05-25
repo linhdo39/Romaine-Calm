@@ -27,6 +27,8 @@ def homepage_view(request):
     r = requests.get(url, headers={'Content-Type':      
     'application/json'})
     recipeJson = r.json()   
+    if 'status' in recipeJson:
+        return render(request, "pages/home.html")
     output = {
         "uri": recipeJson["recipe"]["uri"],
         "name":recipeJson["recipe"]["label"],
@@ -35,7 +37,6 @@ def homepage_view(request):
         "ingredients":recipeJson["recipe"]["ingredientLines"],
         "instruction":recipeJson["recipe"]["url"],
     }
-    print(request.POST)
     if request.method == 'POST' and 'like.x' in request.POST:
         favorite = Favorite(
             user = request.user,
