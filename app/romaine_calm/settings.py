@@ -15,6 +15,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 DJANGO_KEY = os.getenv('DJANGO_KEY')
+USER = os.getenv('USER')
+PASSWORD = os.getenv('PASSWORD')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -92,6 +94,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+'''DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': USER,
+        'PASSWORD': PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}'''
 
 
 # Password validation

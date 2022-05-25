@@ -15,8 +15,9 @@
 <title>Romaine Calm</title>
 
 <body align=" center">
-    <div class="jumbotron" style ="padding: 1rem 1rem;">
-        <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
+    <div class="recipeentry" style="width:75%;margin: auto;">
+        <form action="/home/" method="post"> <input name="__RequestVerificationToken" type="hidden" /> <input name="submit" value={{r.recipe_id}} type="hidden" />
+            {% csrf_token %}
             <fieldset>
                 <div>
                 </div>
@@ -28,45 +29,30 @@
                         </div>
                     </div>
                 </div>
-                <br />
-                <br />
-                <div></div>
-                <div>
-                    <div>
-                        <img width="320" height="300" alt={{recipe.name}} src="{{recipe.image}}" />
-                    </div>
+                <div class="row">
+                    <table align="center">
+                        <tr>
+                            <td>
+                                <input type="image" src="../static/Image/unlike.jpg" name="unlike" width="48"
+                                    height="48" alt="unlike" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} />
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="image" name="like" src="../static/Image/like.jpg" width="48" height="48"
+                                    alt="like" />
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <div>
-                    <div>
-                        <button type="button">Like</button>
-                        <button type="button">Dislike</button>
-                    </div>
-                </div>
-                <!-- <div>
-                    <b><label for="Ingredient">Ingredient </label></b>
-                    <ul class='a'>
-                        {% for line in recipe.ingredients%}
-                        <li class='b'> {{line}} </li>
-                        {% endfor %}
-                    </ul>
-                </div> -->
-                <!-- <div>
-
-                    <b><label for="Instruction"> <a href={{recipe.instruction}} target="_blank">View Instructions
-                                here</a></label></b>
-                </div> -->
             </fieldset>
-            <div>
-                <br />
-            </div>
         </form>
     </div>
-
-    </div>
-    </div>
-    </div>
 </body>
-
 </html>
-
 {% endblock %}

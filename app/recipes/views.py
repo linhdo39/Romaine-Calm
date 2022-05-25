@@ -44,7 +44,7 @@ def add_ingredient(request):
     ingredient_list = Ingredients.objects.filter(user = request.user.id)
     if request.POST.get('name') and request.POST.get('amount'):
         ingredient = Ingredients (
-            user=  request.user,
+            user =  request.user,
             ingredient_name= request.POST.get('name'),
             ingredient_quantity= request.POST.get('amount')
         )
