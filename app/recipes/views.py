@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from .models import Recipe, Favorite, Ingredients
 import requests
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
