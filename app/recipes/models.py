@@ -11,9 +11,9 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name
 
-class FavoriteRecipe(models.Model):
+class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    recipe_id = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    recipe_id = models.CharField(max_length=100)
 
 class Ingredients(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
