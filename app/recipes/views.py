@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from .models import Recipe, Favorite, Ingredients
 import requests
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
@@ -39,10 +39,11 @@ def favorite_view(response):
     for item in list:
         id = item.recipe_id
         url = "https://api.edamam.com/api/recipes/v2/" + id+"?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
-        print(url)
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipe = r.json()   
+        if 'status' in recipe:
+            return render(response, "pages/favorite.html",{'favorite_list': favorite_list})
         output = {
             "uri": recipe["recipe"]["uri"],
             "name":recipe["recipe"]["label"],
@@ -52,8 +53,6 @@ def favorite_view(response):
             "instruction":recipe["recipe"]["url"],
         }
         favorite_list.append(output)
-    for item in favorite_list:
-        print(item)
     return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
 
 def ingredient_view(request):
