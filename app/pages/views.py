@@ -21,36 +21,21 @@ APP_KEY = os.getenv('APP_KEY')
 
 # HOMEPAGE
 def homepage_view(request):
-    recipe = Recipe.objects.order_by('?')[0]
-    id = recipe.recipe_id
-    url = "https://api.edamam.com/api/recipes/v2/" + id + "?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
-    r = requests.get(url, headers={'Content-Type':      
-    'application/json'})
-    recipeJson = r.json()   
-    if 'status' in recipeJson:
-        return render(request, "pages/home.html")
-    output = {
-        "uri": recipeJson["recipe"]["uri"],
-        "name":recipeJson["recipe"]["label"],
-        "image":recipeJson["recipe"]["image"],
-        "yield":recipeJson["recipe"]["yield"],
-        "ingredients":recipeJson["recipe"]["ingredientLines"],
-        "instruction":recipeJson["recipe"]["url"],
-    }
     if request.method == 'POST' and 'like.x' in request.POST:
         favorite = Favorite(
             user = request.user,
-            recipe_id = id
+            recipe_id = request.POST['submit']
         )
         favorite.save()
-        return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe}) 
+        return redirect("home")
+        #return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe}) 
     else:
         recipe = Recipe.objects.order_by('?')[0]
         id = recipe.recipe_id
         url = "https://api.edamam.com/api/recipes/v2/" + id + "?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
-        recipeJson = r.json()   
+        recipeJson = r.json() 
         output = {
             "uri": recipeJson["recipe"]["uri"],
             "name":recipeJson["recipe"]["label"],
