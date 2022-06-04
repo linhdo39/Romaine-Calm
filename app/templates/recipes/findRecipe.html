@@ -5,23 +5,39 @@
 <html lang="en">
 <title>Romaine Calm</title>
 
+<head>
+    <style>
+        a:hover,
+        a:active {
+            background-color: rgba(161, 158, 158, 0.386);
+        }
+    </style>
+</head>
+
 <body>
-    <div class="jumbotron" style ="padding: 1rem 1rem;">
-       <!-- Display list of recipes to choose from-->
+    <div class="jumbotron" style="padding: 1rem 1rem;">
+        <!-- Display list of recipes to choose from-->
         <div>
-            
-            {% for recipe in recipe_list%}     
-            <ul class ='b' style="background-color: rgb(206, 205, 205);">                       
-                <li><a href= {{recipe.recipe_id}}>{{recipe.name}}</a></li>
-                <br>
-            </ul>
-            {% endfor %}      
+            <table align="center">
+                <tr>
+                    <td>
+                        {% for recipe in recipe_list%}
+                        <ul class='b'>
+                            <li><a href={{recipe.recipe_id}}>{{recipe.name}}</a></li>
+                            <br>
+                        </ul>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+
         </div>
-       
+
     </div>
-      
-    
+
+
 </body>
+
 </html>
 
 {% endblock %}
