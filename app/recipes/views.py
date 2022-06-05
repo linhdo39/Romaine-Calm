@@ -6,9 +6,8 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from .models import Recipe, Favorite, Ingredients, UserRecipe
 import requests
-from .forms import RecipePhoto
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
@@ -85,13 +84,10 @@ def add_ingredient(request):
 
 def add_recipe_view(request):
     if request.method == 'POST':
-        form = RecipePhoto(request.POST,request.FILES, instance=request.user.profile)
-        if form.is_valid():
-            form.save()
         userRecipe = UserRecipe (
             name = request.POST.get('Title'),
             category = request.POST['category'],
-            recipe_photo = request.POST.get("recipephoto"),
+            recipe_photo = request.FILES['recipephoto'],
             ingredient = request.POST.get('Ingredients'),
             total_hours = request.POST.get('totalhrs'),
             total_mins = request.POST.get('totalmins'),
@@ -111,5 +107,37 @@ def add_recipe_view(request):
 
         return render(request, "recipes/userRecipe.html", {'recipe': userRecipe})
     else:
-        form = RecipePhoto()
-        return render(request, "pages/addUserRecipe.html", {'form': form})
+        return render(request, "pages/addUserRecipe.html", {})
+
+def my_recipe_view(request):
+    list = UserRecipe.objects.filter(user = request.user.username)
+    return render(request, "recipes/myRecipe.html", {'recipe': list})
+
+def edit_recipe_view(request,id):
+    if request.method == 'POST':
+        UserRecipe.objects.get_or_create(id)
+        userRecipe = UserRecipe (
+            name = request.POST.get('Title'),
+            category = request.POST['category'],
+            recipe_photo = request.FILES['recipephoto'],
+            ingredient = request.POST.get('Ingredients'),
+            total_hours = request.POST.get('totalhrs'),
+            total_mins = request.POST.get('totalmins'),
+            description = request.POST.get('Subhead'),
+            preparation = request.POST.get('instructions'),
+            author = request.user.username
+        )
+        userRecipe.save()
+
+        recipe = Recipe (
+            name = request.POST.get('Title'),
+            recipe_id = request.user.id,
+            category = request.POST['category'],
+            userRecipe = True      
+        )
+        recipe.save()
+
+        return render(request, "recipes/userRecipe.html", {'recipe': userRecipe})
+    else:
+        userRecipe = UserRecipe.objects.get_or_create(id)
+        return render(request, "pages/addUserRecipe.html", {"userRecipe":userRecipe})
