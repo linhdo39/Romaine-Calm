@@ -12,8 +12,8 @@ from recipes.models import Recipe
 import requests
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
 # Create your views here.
@@ -46,20 +46,11 @@ def homepage_view(request):
         return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe})
 
 
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        if request.user.userprofile is None:
-            user_profile = Profile(user=request.user)
-            user_profile.save()
-    return render(request, 'users/profile.html')
 
 @login_required
 def profile(request):
     if request.method == 'POST':
-        if request.user.userprofile is None:
-            user_profile = Profile(user=request.user)
-            user_profile.save()
+        Profile.objects.get_or_create(user=request.user)
         u_form = UserUpdateForm(request.POST,instance=request.user)
         p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
 
