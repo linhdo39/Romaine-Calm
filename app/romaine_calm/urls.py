@@ -23,7 +23,6 @@ from pages.views import help_view
 from pages import views as user_views
 from pages.views import news_view
 from pages.views import contact_view
-from pages.views import add_recipe_view
 from pages.views import redirect_login
 from pages.views import redirect_logout
 from register import views as v
@@ -31,7 +30,7 @@ from recipes.views import index_view
 from recipes.views import all_view
 from recipes.views import add_ingredient
 from recipes.views import ingredient_view
-from recipes.views import favorite_view
+from recipes.views import favorite_view, add_recipe_view
 from django.conf import settings
 from django.conf.urls.static import static
 from pages.views import UserEditView
@@ -58,7 +57,4 @@ urlpatterns = [
     path('add_ingredient/', add_ingredient, name= 'add_Ingredient'),
     path('login', redirect_login),
     path('logout', redirect_logout)
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
