@@ -12,8 +12,8 @@ from recipes.models import Recipe
 import requests
 import os
 
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
 # Create your views here.
