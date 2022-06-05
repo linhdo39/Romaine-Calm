@@ -52,9 +52,13 @@ urlpatterns = [
     path('news/', news_view, name= 'news'),
     path('contact/', contact_view, name= 'contact'),
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
+    path('add_recipe/category', add_recipe_view, name= 'add_recipe'),
     path('favorite/', favorite_view, name= 'favorite'),
     path('pantry/', ingredient_view, name= 'ingredient_view'),
     path('add_ingredient/', add_ingredient, name= 'add_Ingredient'),
     path('login', redirect_login),
     path('logout', redirect_logout)
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
