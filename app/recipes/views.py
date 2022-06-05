@@ -110,7 +110,7 @@ def add_recipe_view(request):
         return render(request, "pages/addUserRecipe.html", {})
 
 def my_recipe_view(request):
-    list = UserRecipe.objects.filter(user = request.user.username)
+    list = UserRecipe.objects.filter(author = request.user.username)
     return render(request, "recipes/myRecipe.html", {'recipe': list})
 
 def edit_recipe_view(request,id):

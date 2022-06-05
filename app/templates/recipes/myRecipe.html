@@ -21,11 +21,11 @@
             <div>
             </div>
             <div class="row">
-            {% for favorite in favorite_list%}
+            {% for item in recipe%}
                 <div class="column">
                     <div class="card">
-                        <img  alt={{recipe.name}} src={{recipe.recipe_photo.url}} style="width:100%">
-                        <p><span id="text"> {{recipe.name}} </span></p>
+                        <img  width="100%" alt={{item.name}} src="{{item.recipe_photo.url}}">
+                        <p><span id="text"> {{item.name}} </span></p>
                         <p ><a  href="/edit_recipe" target="_blank"><button >Edit Recipe</button></a></p>
                     </div>
                     <p></p>
