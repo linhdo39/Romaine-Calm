@@ -39,7 +39,7 @@
                                     </tr>
                                     <tr>
                                         <td> <label for="RecipePhoto">Recipe Photo </label></td>
-                                        <td><input class="form-control" type="file" name="recipephoto" id="recipephoto">
+                                        <td><input class="form-control" type="file" name="recipephoto" id="recipephoto" > 
                                         </td>
                                     </tr>
                                     <tr>
@@ -50,12 +50,11 @@
                                     </textarea></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="Source">Categoty</label></td>
+                                        <td><label for="Source">Category</label></td>
                                         <td>
                                             <div id="categorize">
                                                 <div id="catpicker">
                                                     <span style="float:left;width:100%;">
-                                                        <form action="category" method="post">
                                                         <select name = "category" title="category" class="form-control"
                                                             id="category"
                                                             style="width:100% ; text-align: center;" required>
@@ -85,7 +84,6 @@
                                                             {% else %}
                                                             <option value="Dessert">Dessert</option>
                                                             {% endif %}
-                                                        </form>
                                                         </select>
                                                     </span>
                                                 </div>
