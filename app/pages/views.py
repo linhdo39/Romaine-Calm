@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
 from recipes.models import Favorite
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
@@ -90,10 +89,6 @@ def news_view(response):
 
 def contact_view(response):
     return render(response, "pages/contactUs.html", {})
-
-def add_recipe_view(response):
-    return render(response, "pages/addUserRecipe.html", {})
-
 
 def help_view(response):
     return render(response, "pages/soon.html", {})
