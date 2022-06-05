@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
 from recipes.models import Favorite
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
@@ -13,8 +12,8 @@ from recipes.models import Recipe
 import requests
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
 # Create your views here.
@@ -47,20 +46,11 @@ def homepage_view(request):
         return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe})
 
 
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        if request.user.userprofile is None:
-            user_profile = Profile(user=request.user)
-            user_profile.save()
-    return render(request, 'users/profile.html')
 
 @login_required
 def profile(request):
     if request.method == 'POST':
-        if request.user.userprofile is None:
-            user_profile = Profile(user=request.user)
-            user_profile.save()
+        Profile.objects.get_or_create(user=request.user)
         u_form = UserUpdateForm(request.POST,instance=request.user)
         p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
 
@@ -90,10 +80,6 @@ def news_view(response):
 
 def contact_view(response):
     return render(response, "pages/contactUs.html", {})
-
-def add_recipe_view(response):
-    return render(response, "pages/addUserRecipe.html", {})
-
 
 def help_view(response):
     return render(response, "pages/soon.html", {})

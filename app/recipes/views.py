@@ -4,10 +4,11 @@ from django.http import HttpRequest, HttpResponse
 import os
 from django.shortcuts import render
 from django.http import HttpRequest
-from .models import Recipe, Favorite, Ingredients
+from .models import Recipe, Favorite, Ingredients, UserRecipe
 import requests
-from dotenv import load_dotenv
-load_dotenv()
+from .forms import RecipePhoto
+#from dotenv import load_dotenv
+#load_dotenv()
 
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
@@ -80,3 +81,35 @@ def add_ingredient(request):
         return render(request, 'recipes/addIngredient.html',{'ingredient_list': ingredient_list})  
     else:
         return render(request,'recipes/addIngredient.html', {'ingredient_list': ingredient_list})
+
+
+def add_recipe_view(request):
+    if request.method == 'POST':
+        form = RecipePhoto(request.POST,request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+        userRecipe = UserRecipe (
+            name = request.POST.get('Title'),
+            category = request.POST['category'],
+            recipe_photo = request.POST.get("recipephoto"),
+            ingredient = request.POST.get('Ingredients'),
+            total_hours = request.POST.get('totalhrs'),
+            total_mins = request.POST.get('totalmins'),
+            description = request.POST.get('Subhead'),
+            preparation = request.POST.get('instructions'),
+            author = request.user.username
+        )
+        userRecipe.save()
+
+        recipe = Recipe (
+            name = request.POST.get('Title'),
+            recipe_id = request.user.id,
+            category = request.POST['category'],
+            userRecipe = True      
+        )
+        recipe.save()
+
+        return render(request, "recipes/userRecipe.html", {'recipe': userRecipe})
+    else:
+        form = RecipePhoto()
+        return render(request, "pages/addUserRecipe.html", {'form': form})
