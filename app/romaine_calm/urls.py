@@ -30,7 +30,7 @@ from recipes.views import index_view
 from recipes.views import all_view
 from recipes.views import add_ingredient
 from recipes.views import ingredient_view
-from recipes.views import favorite_view, add_recipe_view
+from recipes.views import favorite_view, add_recipe_view, my_recipe_view, edit_recipe_view
 from django.conf import settings
 from django.conf.urls.static import static
 from pages.views import UserEditView
@@ -52,10 +52,11 @@ urlpatterns = [
     path('news/', news_view, name= 'news'),
     path('contact/', contact_view, name= 'contact'),
     path('add_recipe/', add_recipe_view, name= 'add_recipe'),
-    path('add_recipe/category', add_recipe_view, name= 'add_recipe'),
+     path('edit_recipe/<id>', edit_recipe_view, name= 'edit_recipe'),
     path('favorite/', favorite_view, name= 'favorite'),
     path('pantry/', ingredient_view, name= 'ingredient_view'),
     path('add_ingredient/', add_ingredient, name= 'add_Ingredient'),
+    path('my_recipe/',my_recipe_view, name= 'my_recipe'),
     path('login', redirect_login),
     path('logout', redirect_logout)
 ]
