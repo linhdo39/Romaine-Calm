@@ -16,7 +16,7 @@ class Recipe(models.Model):
 class UserRecipe(models.Model):
     name = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
-    recipe_photo = models.ImageField(upload_to='images/', null=True, verbose_name="")
+    recipe_photo = models.ImageField(upload_to='', null=True, verbose_name="")
     ingredient = models.CharField(max_length=5000)
     total_hours = models.CharField(max_length=100)
     total_mins = models.CharField(max_length=100)
@@ -36,5 +36,5 @@ class Ingredients(models.Model):
     ingredient_quantity =  models.CharField(max_length=100)
 
 class Photo(models.Model):
-    photo = models.ImageField(upload_to='images/')
+    photo = models.ImageField(upload_to='')
 
