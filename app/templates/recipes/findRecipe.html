@@ -21,6 +21,39 @@
             <table align="center">
                 <tr>
                     <td>
+                        <div id="categorize">
+                            <div id="catpicker">
+                                <script type="text/javascript">
+                                    function changeDrop() {
+                                        var val = $("select#primaryrecipecategory").val(); // 0...11
+                                        if (val === "0") {
+                                            return;
+                                        }
+                                        $.get(
+                                            "/recipe/getcategories?id=" + val,
+                                            function (data) {
+                                                populateDropdown($("#recipecategory"), data);
+                                            }
+                                        );
+                                    }                               
+                                </script>
+                                <span style="float:left;width:100%;">
+                                    <select name="primaryrecipecategory" class="form-control" onchange="changeDrop();"
+                                        id="primaryrecipecategory" style="width:100% ; text-align: center;">
+                                        <option value="0">---- Select Recipe Categoty ----</option>
+                                        <option value="1">Breakfast</option>
+                                        <option value="2">Brunch</option>
+                                        <option value="3">Lunch</option>
+                                        <option value="4">Dinner</option>
+                                        <option value="5">Dessert</option>
+
+                                    </select>
+                                </span>
+                            </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         {% for recipe in recipe_list%}
                         <ul class='b'>
                             <li><a href={{recipe.recipe_id}}>{{recipe.name}}</a></li>
