@@ -7,8 +7,8 @@ from django.http import HttpRequest
 from .models import Recipe, Favorite, Ingredients, UserRecipe
 import requests
 import datetime
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
