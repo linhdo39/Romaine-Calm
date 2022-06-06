@@ -16,7 +16,8 @@
 <body>
     <div class="jumbotron" style="padding: 1rem 1rem;">
         <div class="recipeentry" style="width:75%;margin: auto;">
-            <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
+            <form action="/add_recipe/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <fieldset>
                     <div style="width:95%;">
                         <div style="float:left;width:100%;">
@@ -38,7 +39,7 @@
                                     </tr>
                                     <tr>
                                         <td> <label for="RecipePhoto">Recipe Photo </label></td>
-                                        <td><input class="form-control" type="file" id="recipephoto" name="recipephoto">
+                                        <td><input class="form-control" type="file" name="recipephoto" id="recipephoto" > 
                                         </td>
                                     </tr>
                                     <tr>
@@ -49,35 +50,40 @@
                                     </textarea></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="Source">Categoty</label></td>
+                                        <td><label for="Source">Category</label></td>
                                         <td>
                                             <div id="categorize">
                                                 <div id="catpicker">
-                                                    <script type="text/javascript">
-                                                        function changeDrop() {
-                                                            var val = $("select#primaryrecipecategory").val(); // 0...11
-                                                            if (val === "0") {
-                                                                return;
-                                                            }
-                                                            $.get(
-                                                                "/recipe/getcategories?id=" + val,
-                                                                function (data) {
-                                                                    populateDropdown($("#recipecategory"), data);
-                                                                }
-                                                            );
-                                                        }                               
-                                                    </script>
                                                     <span style="float:left;width:100%;">
-                                                        <select name="primaryrecipecategory" class="form-control"
-                                                            onchange="changeDrop();" id="primaryrecipecategory"
-                                                            style="width:100% ; text-align: center;">
-                                                            <option value="0">---- Select Recipe Categoty ----</option>
-                                                            <option value="1">Breakfast</option>
-                                                            <option value="2">Brunch</option>
-                                                            <option value="3">Lunch</option>
-                                                            <option value="4">Dinner</option>
-                                                            <option value="5">Dessert</option>
-
+                                                        <select name = "category" title="category" class="form-control"
+                                                            id="category"
+                                                            style="width:100% ; text-align: center;" required>
+                                                            <option value="0" disabled>---- Select Recipe Categoty ----</option>
+                                                            {% if data.primaryrecipecategory == "Breakfast"%}
+                                                            <option value="Breakfast" selected>Breakfast</option>
+                                                            {% else %}
+                                                            <option value="Breakfast">Breakfast</option>
+                                                            {% endif %}
+                                                            {% if data.primaryrecipecategory == "Brunch" %}
+                                                            <option value="Brunch" selected>Brunch</option>
+                                                            {% else %}
+                                                            <option value="Brunch">Brunch</option>
+                                                            {% endif %}
+                                                            {% if data.primaryrecipecategory == "Lunch" %}
+                                                            <option value="Lunch" selected>Lunch</option>
+                                                            {% else %}
+                                                            <option value="Lunch">Lunch</option>
+                                                            {% endif %}
+                                                            {% if data.primaryrecipecategory == "Dinner" %}
+                                                            <option value="Dinner" selected>Dinner</option>
+                                                            {% else %}
+                                                            <option value="Dinner">Dinner</option>
+                                                            {% endif %}
+                                                            {% if data.primaryrecipecategory == "Dessert" %}
+                                                            <option value="Dessert" selected>Dessert</option>
+                                                            {% else %}
+                                                            <option value="Dessert">Dessert</option>
+                                                            {% endif %}
                                                         </select>
                                                     </span>
                                                 </div>
@@ -97,9 +103,10 @@
                                     </tr>
                                     <tr>
                                         <td><label for="Instructions">Preparation </label></td>
-                                        <td> <textarea class="form-control" cols="20" id="Instructions" maxlength="4000"
-                                                name="Instructions" rows="2" style="width:100%;height:280px;">
-                                            </textarea></td>
+                                        <td>
+                                            <input class="form-control" cols="20"  maxlength="4000"
+                                            id="instructions" rows="2" style="width:100%;height:280px;" type="text" name="instructions"/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="7" align="center"><input type="submit" id="finalbutton"

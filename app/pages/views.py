@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
 from recipes.models import Favorite
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
@@ -13,44 +12,32 @@ from recipes.models import Recipe
 import requests
 import os
 
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
 # Create your views here.
 
 # HOMEPAGE
 def homepage_view(request):
-    recipe = Recipe.objects.order_by('?')[0]
-    id = recipe.recipe_id
-    url = "https://api.edamam.com/api/recipes/v2/" + id + "?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
-    r = requests.get(url, headers={'Content-Type':      
-    'application/json'})
-    recipeJson = r.json()   
-    if 'status' in recipeJson:
-        return render(request, "pages/home.html")
-    output = {
-        "uri": recipeJson["recipe"]["uri"],
-        "name":recipeJson["recipe"]["label"],
-        "image":recipeJson["recipe"]["image"],
-        "yield":recipeJson["recipe"]["yield"],
-        "ingredients":recipeJson["recipe"]["ingredientLines"],
-        "instruction":recipeJson["recipe"]["url"],
-    }
-    if request.method == 'POST' and 'like.x' in request.POST:
+    print(request.POST)
+    if request.method == 'POST' and 'unlike.y' in request.POST:
         favorite = Favorite(
             user = request.user,
-            recipe_id = id
+            recipe_id = request.POST['submit']
         )
         favorite.save()
-        return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe}) 
+        return redirect("home")
+        #return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe}) 
     else:
         recipe = Recipe.objects.order_by('?')[0]
         id = recipe.recipe_id
         url = "https://api.edamam.com/api/recipes/v2/" + id + "?type=public&app_id=" + APP_ID + "&app_key="+ APP_KEY
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
-        recipeJson = r.json()   
+        recipeJson = r.json() 
+        if 'json_message' in recipeJson or 'status' in recipeJson:
+            return render(request, "pages/error.html",{})
         output = {
             "uri": recipeJson["recipe"]["uri"],
             "name":recipeJson["recipe"]["label"],
@@ -62,20 +49,11 @@ def homepage_view(request):
         return render(request, "pages/home.html", {'recipe' : output, 'r' : recipe})
 
 
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        if request.user.userprofile is None:
-            user_profile = Profile(user=request.user)
-            user_profile.save()
-    return render(request, 'users/profile.html')
 
 @login_required
 def profile(request):
     if request.method == 'POST':
-        if request.user.userprofile is None:
-            user_profile = Profile(user=request.user)
-            user_profile.save()
+        Profile.objects.get_or_create(user=request.user)
         u_form = UserUpdateForm(request.POST,instance=request.user)
         p_form = ProfileUpdateForm(request.POST,request.FILES, instance=request.user.profile)
 
@@ -106,15 +84,15 @@ def news_view(response):
 def contact_view(response):
     return render(response, "pages/contactUs.html", {})
 
-def add_recipe_view(response):
-    return render(response, "pages/addUserRecipe.html", {})
-
-
 def help_view(response):
-    return render(response, "pages/Help.html", {})
+    return render(response, "pages/help.html", {})
 
 def redirect_login(response):
     response = redirect('login/')
+    return response
+
+def redirect_contact(response):
+    response = redirect('/contact/')
     return response
 
 def redirect_logout(response):   
