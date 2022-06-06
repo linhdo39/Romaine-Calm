@@ -4,83 +4,95 @@
 <!doctype html>
 <html lang="en">
 <title>Romaine Calm</title>
+
 <head>
-    <style>
-        #nameDiv{
-            margin-top: 50px;
-        }
-
-        .input{
-            font-size: 25px;
-            color:  #808080;
-            font-weight: 700;
-            font-family: cursive;
-            margin: 15px;
-        }
-
-        #add {
-            width: 130px;
-            height: 40px;
-            font-size: 23px;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: gray;
-            color: whitesmoke;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
-            margin-top: 10px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 50%;
-            margin: 50px auto;
-            background-color: #D3D3D3;
-        }
-
-        table, th, td {
-            border: 2px solid white;
-            padding: 5px;
-        }
-
-        th{
-            font-size: 20px;
-            font-weight: 700;
-            font-family: cursive;
-            color:  gray;
-
-        }
-        td{
-            font-size: 14px;
-            color:  gray;
-            font-weight: 400;
-            font-family: Georgia;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/ingredients.css">
 </head>
+
 <body>
-    <div class="jumbotron" style ="padding: 1rem 1rem;">
-       
-        <!-- Display list of recipes to choose from-->
-        <div>
-            
-            <table id="display">
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-                {% for ingredient in ingredient_list%}     
-                <tr>
-                    <th>{{ingredient.ingredient_name}}</th>
-                    <th>{{ingredient.ingredient_quantity}}</th>
-                </tr>
-                {% endfor %}   
-            </table>
+    <div class="jumbotron" style="padding: 1rem 1rem;">
+        <div class="tabs">
+            <span data-tab-value="#tab_1">Ingredient</span>
+            <span data-tab-value="#tab_2">Expiring Soon</span>
+            <!-- <span data-tab-value="#tab_3">Expired</span> -->
         </div>
-        
+        <!-- <div class="tab-content"> -->
+        <div class="tab-content" align="center">
+
+            <div class="tabs__tab active" id="tab_1" data-tab-info>
+                <table id="display">
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                    {% for ingredient in ingredient_list%}
+                    <tr>
+                        <th>tab 1</th>
+                        <th>{{ingredient.ingredient_name}}</th>
+                        <th>{{ingredient.ingredient_quantity}}</th>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <div class="tabs__tab" id="tab_2" data-tab-info>
+                <table id="display">
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                    {% for ingredient in ingredient_list%}
+
+                    <tr>
+                        <th>tab 2</th>
+                        <th>{{ingredient.ingredient_name}}</th>
+                        <th>{{ingredient.ingredient_quantity}}</th>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <!-- <div class="tabs__tab" id="tab_3" data-tab-info>
+                <table id="display">
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                    {% for ingredient in ingredient_list%}
+
+                    <tr>
+                        <th>tab 3</th>
+                        <th>{{ingredient.ingredient_name}}</th>
+                        <th>{{ingredient.ingredient_quantity}}</th>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div> -->
+        </div>
     </div>
-        
-    
+    <script type="text/javascript">
+        const tabs = document.querySelectorAll('[data-tab-value]')
+        const tabInfos = document.querySelectorAll('[data-tab-info]')
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = document
+                    .querySelector(tab.dataset.tabValue);
+
+                tabInfos.forEach(tabInfo => {
+                    tabInfo.classList.remove('active')
+                })
+                target.classList.add('active');
+            })
+        })
+    </script>
+
 </body>
+
 </html>
 
 {% endblock %}
