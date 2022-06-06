@@ -1,10 +1,12 @@
 from tokenize import String
+from unicodedata import name
 from django.http import HttpRequest, HttpResponse
 import os
 from django.shortcuts import render
 from django.http import HttpRequest
-from .models import Recipe, Favorite, Ingredients
+from .models import Recipe, Favorite, Ingredients, UserRecipe
 import requests
+import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -13,9 +15,16 @@ APP_KEY = os.getenv('APP_KEY')
 
 # Create your views here.
 
-def all_view(response):
-    recipe_list = Recipe.objects.order_by('?')[:20]
-    return render(response, "recipes/findRecipe.html", {'recipe_list': recipe_list})
+def all_view(request):
+    if "search" in request.GET:
+        recipe_list = Recipe.objects.order_by('?')[:20]
+        search = request.GET["search"]
+        #url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + search + "&app_id=" + APP_ID+ "&app_key="+APP_KEY
+        recipe_list = Recipe.objects.all().filter(name__contains = search)
+        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list})
+    else:
+        recipe_list = Recipe.objects.order_by('?')[:20]
+        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list})
 
 def index_view(response,id):
     #return HttpResponse("recipe home")
@@ -23,6 +32,8 @@ def index_view(response,id):
     r = requests.get(url, headers={'Content-Type':      
     'application/json'})
     recipe = r.json()   
+    if 'json_message' in recipe or 'status' in recipe:
+        return render(response, "pages/error.html",{})
     output = {
         "uri": recipe["recipe"]["uri"],
         "name":recipe["recipe"]["label"],
@@ -42,8 +53,8 @@ def favorite_view(response):
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipe = r.json()   
-        if 'status' in recipe:
-            return render(response, "pages/favorite.html",{'favorite_list': favorite_list})
+        if 'json_message' in recipe or 'status' in recipe:
+            return render(response, "pages/error.html",{})
         output = {
             "uri": recipe["recipe"]["uri"],
             "name":recipe["recipe"]["label"],
@@ -56,19 +67,87 @@ def favorite_view(response):
     return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
 
 def ingredient_view(request):
-    ingredient_list = Ingredients.objects.filter(user = request.user.id)
-    return render(request, "recipes/ingredients.html", {'ingredient_list': ingredient_list})
+    almost_expire = Ingredients.objects.filter(user = request.user.id).filter(expiration_date__month = datetime.date.today().month)
+    ingredient_list = Ingredients.objects.filter(user = request.user.id).exclude(expiration_date__month = datetime.date.today().month)
+    return render(request, "recipes/ingredients.html", {'ingredient_list': ingredient_list, 'almost_expire':almost_expire})
 
 def add_ingredient(request):
     ingredient_list = Ingredients.objects.filter(user = request.user.id)
     if request.POST.get('name') and request.POST.get('amount'):
-        ingredient = Ingredients (
-            user =  request.user,
-            ingredient_name= request.POST.get('name'),
-            ingredient_quantity= request.POST.get('amount')
-        )
-        ingredient.save()
+        ingredient_list = Ingredients.objects.filter(user = request.user.id).filter(ingredient_name = request.POST.get('name'))
+        if ingredient_list:
+            Ingredients.objects.filter(user = request.user.id).filter(ingredient_name = request.POST.get('name')).update(ingredient_quantity = request.POST.get('amount'))
+            Ingredients.objects.filter(user = request.user.id).filter(ingredient_name = request.POST.get('name')).update(expiration_date = request.POST.get('expiration_date'))
+        else:
+            ingredient = Ingredients (
+                user =  request.user,
+                ingredient_name= request.POST.get('name'),
+                ingredient_quantity= request.POST.get('amount'),
+                expiration_date = request.POST.get('expiration_date')
+            )
+            ingredient.save()
         ingredient_list = Ingredients.objects.filter(user = request.user.id)
         return render(request, 'recipes/addIngredient.html',{'ingredient_list': ingredient_list})  
     else:
         return render(request,'recipes/addIngredient.html', {'ingredient_list': ingredient_list})
+
+
+def add_recipe_view(request):
+    if request.method == 'POST':
+        userRecipe = UserRecipe (
+            name = request.POST.get('Title'),
+            category = request.POST['category'],
+            recipe_photo = request.FILES['recipephoto'],
+            ingredient = request.POST.get('Ingredients'),
+            total_hours = request.POST.get('totalhrs'),
+            total_mins = request.POST.get('totalmins'),
+            description = request.POST.get('Subhead'),
+            preparation = request.POST.get('instructions'),
+            author = request.user.username
+        )
+        userRecipe.save()
+
+        recipe = Recipe (
+            name = request.POST.get('Title'),
+            recipe_id = request.user.id,
+            category = request.POST['category'],
+            userRecipe = True      
+        )
+        recipe.save()
+
+        return render(request, "recipes/userRecipe.html", {'recipe': userRecipe})
+    else:
+        return render(request, "pages/addUserRecipe.html", {})
+
+def my_recipe_view(request):
+    list = UserRecipe.objects.filter(author = request.user.username)
+    return render(request, "recipes/myRecipe.html", {'recipe': list})
+
+def edit_recipe_view(request,id):
+    if request.method == 'POST':
+        UserRecipe.objects.get_or_create(id)
+        userRecipe = UserRecipe (
+            name = request.POST.get('Title'),
+            category = request.POST['category'],
+            recipe_photo = request.FILES['recipephoto'],
+            ingredient = request.POST.get('Ingredients'),
+            total_hours = request.POST.get('totalhrs'),
+            total_mins = request.POST.get('totalmins'),
+            description = request.POST.get('Subhead'),
+            preparation = request.POST.get('instructions'),
+            author = request.user.username
+        )
+        userRecipe.save()
+
+        recipe = Recipe (
+            name = request.POST.get('Title'),
+            recipe_id = request.user.id,
+            category = request.POST['category'],
+            userRecipe = True      
+        )
+        recipe.save()
+
+        return render(request, "recipes/userRecipe.html", {'recipe': userRecipe})
+    else:
+        userRecipe = UserRecipe.objects.get_or_create(id)
+        return render(request, "pages/addUserRecipe.html", {"userRecipe":userRecipe})

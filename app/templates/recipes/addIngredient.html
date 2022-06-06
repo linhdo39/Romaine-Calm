@@ -73,8 +73,8 @@
                     </tr>
                     <tr>
                         <td class="decorate_input"> Date</td>
-                        <td><input type="date" id="start" name="trip-start" value="2022-06-05" min="2018-01-01"
-                                max="2018-12-31"></td>
+                        <td><input type="date" id="expiration_date" name="expiration_date" value="2022-06-05" min="2018-01-01"
+                                max="2100-12-31"></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center"><input id="decorate_btn" type="submit" value="Add"></td>
@@ -92,9 +92,11 @@
                 <tr>
                     <th>{{ingredient.ingredient_name}}</th>
                     <th>{{ingredient.ingredient_quantity}}</th>
+                    <th>{{ingredient.expiration_date}}</th>
                 </tr>
                 {% endfor %}
             </table>
+            <p>If you enter the same ingredient, the new input will replace the previous input</p>
         </div>
 </body>
 
