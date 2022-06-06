@@ -61,19 +61,37 @@
        
         <!-- Display list of recipes to choose from-->
         <div>
-            
+            <p>Expire/ Soon to be expire</p>
             <table id="display">
                 <tr>
                     <th>Ingredient</th>
                     <th>Amount</th>
                     <th>Date</th>
                 </tr>
-                {% for ingredient in ingredient_list%}     
+                {% for ingredient in almost_expire%}
                 <tr>
                     <th>{{ingredient.ingredient_name}}</th>
                     <th>{{ingredient.ingredient_quantity}}</th>
+                    <th>{{ingredient.expiration_date}}</th>
                 </tr>
-                {% endfor %}   
+                {% endfor %}
+            </table>
+        </div>
+        <div>
+            <p>My current ingredient</p>
+            <table id="display">
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+                {% for ingredient in ingredient_list%}
+                <tr>
+                    <th>{{ingredient.ingredient_name}}</th>
+                    <th>{{ingredient.ingredient_quantity}}</th>
+                    <th>{{ingredient.expiration_date}}</th>
+                </tr>
+                {% endfor %}
             </table>
         </div>
         
