@@ -31,6 +31,8 @@ def index_view(response,id):
     r = requests.get(url, headers={'Content-Type':      
     'application/json'})
     recipe = r.json()   
+    if 'json_message' in recipe or 'status' in recipe:
+        return render(response, "pages/error.html",{})
     output = {
         "uri": recipe["recipe"]["uri"],
         "name":recipe["recipe"]["label"],
@@ -50,8 +52,8 @@ def favorite_view(response):
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipe = r.json()   
-        if 'status' in recipe:
-            return render(response, "pages/favorite.html",{'favorite_list': favorite_list})
+        if 'json_message' in recipe or 'status' in recipe:
+            return render(response, "pages/error.html",{})
         output = {
             "uri": recipe["recipe"]["uri"],
             "name":recipe["recipe"]["label"],
