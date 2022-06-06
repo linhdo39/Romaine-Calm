@@ -90,6 +90,10 @@ def redirect_login(response):
     response = redirect('login/')
     return response
 
+def redirect_contact(response):
+    response = redirect('/contact/')
+    return response
+
 def redirect_logout(response):   
     response = redirect('logout/')
     return response
