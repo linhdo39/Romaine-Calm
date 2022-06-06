@@ -10,7 +10,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <div class="jumbotron" style="padding: 1rem 1rem;">
         <div class="tabs">
             <span data-tab-value="#tab_1">Ingredient</span>
@@ -73,44 +72,6 @@
                 </table>
 
             </div> -->
-=======
-    <div class="jumbotron" style ="padding: 1rem 1rem;">
-       
-        <!-- Display list of recipes to choose from-->
-        <div>
-            <p>Expire/ Soon to be expire</p>
-            <table id="display">
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-                {% for ingredient in almost_expire%}
-                <tr>
-                    <th>{{ingredient.ingredient_name}}</th>
-                    <th>{{ingredient.ingredient_quantity}}</th>
-                    <th>{{ingredient.expiration_date}}</th>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
-        <div>
-            <p>My current ingredient</p>
-            <table id="display">
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-                {% for ingredient in ingredient_list%}
-                <tr>
-                    <th>{{ingredient.ingredient_name}}</th>
-                    <th>{{ingredient.ingredient_quantity}}</th>
-                    <th>{{ingredient.expiration_date}}</th>
-                </tr>
-                {% endfor %}
-            </table>
->>>>>>> c62ee2e7c2f0fb79ce54acc3c0596e375f955a99
         </div>
     </div>
     <script type="text/javascript">
