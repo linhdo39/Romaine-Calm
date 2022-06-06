@@ -34,4 +34,5 @@ class Ingredients(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ingredient_name = models.CharField(max_length=100)
     ingredient_quantity =  models.CharField(max_length=100)
+    expiration_date = models.DateField()
 
