@@ -11,8 +11,8 @@
 <body>
     <div class="jumbotron" style="padding: 1rem 1rem;">
         <div class="recipeentry" style="width:75%;margin: auto;">
-            <form action="/recipe/post" method="post">
-                <input name="__RequestVerificationToken" type="hidden" />
+            <form action="contact/" method="post">
+                {% csrf_token %}
                 <fieldset>
                     <!-- <legend>
                         <h3>About Romaine Calm</h3>
@@ -59,7 +59,7 @@
                                     <h2>Linh</h2>
                                     <p class="title">CEO & Founder</p>
                                     <p>linh@depaul.com</p>
-                                    <p><button class="button" style="color: black;">Contact</button></p>
+                                    <p><a href="contact/"><button class="button" style="color: black;">Contact</button></a></p>
                                 </div>
                             </td>
                             <td style="width:50%;">
@@ -67,7 +67,7 @@
                                     <h2>Kyle</h2>
                                     <p class="title">Database Director</p>
                                     <p>kylemastrangeli@gmail.com</p>
-                                    <p><button class="button" style="color: black;">Contact</button></p>
+                                    <p><a href="contact/"><button class="button" style="color: black;">Contact</button></a></p>
                                 </div>
                             </td>
                         </tr>
@@ -78,7 +78,7 @@
                                     <p class="title">Designer</p>
                                     <p>Some text that describes Elmina.</p>
                                     <p>elminabrkic@icloud.com</p>
-                                    <p><button class="button" style="color: black;">Contact</button></p>
+                                    <p><a href="contact/"><button class="button" style="color: black;">Contact</button></a></p>
                                 </div>
                             </td>
                             <td style="width:50%;">
@@ -87,7 +87,7 @@
                                     <p class="title">Designer</p>
                                     <p>Some text describes Twinkle.</p>
                                     <p>tpatel53@depaul.edu</p>
-                                    <p><button class="button" style="color: black;">Contact</button></p>
+                                    <p><a href="contact/"><button class="button" style="color: black;">Contact</button></a></p>
                                 </div>
                             </td>
                         </tr>
@@ -98,9 +98,5 @@
         </div>
     </div>
 </body>
-<<<<<<< HEAD
-
-=======
->>>>>>> Twinkle-Branch
 </html>
 {% endblock %}
