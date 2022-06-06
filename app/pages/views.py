@@ -20,7 +20,8 @@ APP_KEY = os.getenv('APP_KEY')
 
 # HOMEPAGE
 def homepage_view(request):
-    if request.method == 'POST' and 'like.x' in request.POST:
+    print(request.POST)
+    if request.method == 'POST' and 'unlike.y' in request.POST:
         favorite = Favorite(
             user = request.user,
             recipe_id = request.POST['submit']
@@ -35,6 +36,8 @@ def homepage_view(request):
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipeJson = r.json() 
+        if 'json_message' in recipeJson or 'status' in recipeJson:
+            return render(request, "pages/error.html",{})
         output = {
             "uri": recipeJson["recipe"]["uri"],
             "name":recipeJson["recipe"]["label"],
@@ -82,10 +85,14 @@ def contact_view(response):
     return render(response, "pages/contactUs.html", {})
 
 def help_view(response):
-    return render(response, "pages/soon.html", {})
+    return render(response, "pages/help.html", {})
 
 def redirect_login(response):
     response = redirect('login/')
+    return response
+
+def redirect_contact(response):
+    response = redirect('/contact/')
     return response
 
 def redirect_logout(response):   

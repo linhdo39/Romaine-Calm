@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from .models import Recipe, Favorite, Ingredients, UserRecipe
 import requests
+import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -31,6 +32,8 @@ def index_view(response,id):
     r = requests.get(url, headers={'Content-Type':      
     'application/json'})
     recipe = r.json()   
+    if 'json_message' in recipe or 'status' in recipe:
+        return render(response, "pages/error.html",{})
     output = {
         "uri": recipe["recipe"]["uri"],
         "name":recipe["recipe"]["label"],
@@ -50,8 +53,8 @@ def favorite_view(response):
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipe = r.json()   
-        if 'status' in recipe:
-            return render(response, "pages/favorite.html",{'favorite_list': favorite_list})
+        if 'json_message' in recipe or 'status' in recipe:
+            return render(response, "pages/error.html",{})
         output = {
             "uri": recipe["recipe"]["uri"],
             "name":recipe["recipe"]["label"],
@@ -64,18 +67,25 @@ def favorite_view(response):
     return render(response, "pages/favorite.html", {'favorite_list': favorite_list})
 
 def ingredient_view(request):
-    ingredient_list = Ingredients.objects.filter(user = request.user.id)
-    return render(request, "recipes/ingredients.html", {'ingredient_list': ingredient_list})
+    almost_expire = Ingredients.objects.filter(user = request.user.id).filter(expiration_date__month = datetime.date.today().month)
+    ingredient_list = Ingredients.objects.filter(user = request.user.id).exclude(expiration_date__month = datetime.date.today().month)
+    return render(request, "recipes/ingredients.html", {'ingredient_list': ingredient_list, 'almost_expire':almost_expire})
 
 def add_ingredient(request):
     ingredient_list = Ingredients.objects.filter(user = request.user.id)
     if request.POST.get('name') and request.POST.get('amount'):
-        ingredient = Ingredients (
-            user =  request.user,
-            ingredient_name= request.POST.get('name'),
-            ingredient_quantity= request.POST.get('amount')
-        )
-        ingredient.save()
+        ingredient_list = Ingredients.objects.filter(user = request.user.id).filter(ingredient_name = request.POST.get('name'))
+        if ingredient_list:
+            Ingredients.objects.filter(user = request.user.id).filter(ingredient_name = request.POST.get('name')).update(ingredient_quantity = request.POST.get('amount'))
+            Ingredients.objects.filter(user = request.user.id).filter(ingredient_name = request.POST.get('name')).update(expiration_date = request.POST.get('expiration_date'))
+        else:
+            ingredient = Ingredients (
+                user =  request.user,
+                ingredient_name= request.POST.get('name'),
+                ingredient_quantity= request.POST.get('amount'),
+                expiration_date = request.POST.get('expiration_date')
+            )
+            ingredient.save()
         ingredient_list = Ingredients.objects.filter(user = request.user.id)
         return render(request, 'recipes/addIngredient.html',{'ingredient_list': ingredient_list})  
     else:

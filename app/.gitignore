@@ -9,3 +9,7 @@ pycache
 recipes/info.py
 recipes/migrations
 .env
+.cfg
+client.py
+/Scripts/
+/Lib/
