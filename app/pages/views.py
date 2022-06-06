@@ -35,6 +35,8 @@ def homepage_view(request):
         r = requests.get(url, headers={'Content-Type':      
         'application/json'})
         recipeJson = r.json() 
+        if 'json_message' in recipeJson or 'status' in recipeJson:
+            return render(request, "pages/error.html",{})
         output = {
             "uri": recipeJson["recipe"]["uri"],
             "name":recipeJson["recipe"]["label"],
