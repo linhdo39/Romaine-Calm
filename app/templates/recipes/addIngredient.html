@@ -2,29 +2,28 @@
 {% block content %}
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Ingredients</title>
     <style>
-
-        #decorate_input{
+        #decorate_input {
             font-size: 20px;
-            color:  #808080;
+            color: #808080;
             font-weight: 700;
-            font-family: cursive;
+            font-family: "Comic Sans MS", cursive;
             margin: 15px;
         }
 
         #decorate_btn {
-            width: 130px;
+            width: 120px;
             height: 40px;
             font-size: 20px;
             font-family: "Comic Sans MS", cursive, sans-serif;
             background-color: gray;
             color: whitesmoke;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
-            margin-top: 10px;
         }
 
         table {
@@ -34,49 +33,69 @@
             background-color: #D3D3D3;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 2px solid white;
             padding: 5px;
         }
 
-        th{
+        th {
             font-size: 20px;
             font-weight: 700;
             font-family: cursive;
-            color:  gray;
+            color: gray;
 
         }
-        td{
+
+        td {
             font-size: 14px;
-            color:  gray;
+            color: gray;
             font-weight: 400;
-            font-family: Georgia;
+            font-family: "Comic Sans MS", cursive;
         }
     </style>
 </head>
 
 <body>
-    <div class="jumbotron" style ="padding: 1rem 1rem;">
-       <div id="container" align="center">
-        <form action="" method="POST">
-            {% csrf_token %}
-            <div id="decorate_input">Ingredient <input name="name" type="text"/></div>
-            <div id="decorate_input">Amount <input name="amount" type="text"/></div>
-            <input id="decorate_btn" type="submit" value ="Add">
-        </form>
-        <table id="display">
-            <tr>
-                <th>Ingredient</th>
-                <th>Amount</th>
-            </tr>
-            {% for ingredient in ingredient_list%}     
-            <tr>
-                <th>{{ingredient.ingredient_name}}</th>
-                <th>{{ingredient.ingredient_quantity}}</th>
-            </tr>
-            {% endfor %}   
-        </table>
-    </div>
+    <div class="jumbotron" style="padding: 1rem 1rem;">
+        <div id="container" align="center">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td class="decorate_input">Ingredient</td>
+                        <td><input name="name" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="decorate_input"> Amount</td>
+                        <td><input name="amount" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td class="decorate_input"> Date</td>
+                        <td><input type="date" id="start" name="trip-start" value="2022-06-05" min="2018-01-01"
+                                max="2018-12-31"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input id="decorate_btn" type="submit" value="Add"></td>
+                    </tr>
+
+                </table>
+            </form>
+            <table id="display">
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+                {% for ingredient in ingredient_list%}
+                <tr>
+                    <th>{{ingredient.ingredient_name}}</th>
+                    <th>{{ingredient.ingredient_quantity}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 </body>
 
 </html>

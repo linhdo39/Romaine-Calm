@@ -1,0 +1,87 @@
+#nameDiv {
+    margin-top: 50px;
+}
+
+.input {
+    font-size: 25px;
+    color: #808080;
+    font-weight: 700;
+    font-family: cursive;
+    margin: 15px;
+}
+
+#add {
+    width: 130px;
+    height: 40px;
+    font-size: 23px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: gray;
+    color: whitesmoke;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 50px auto;
+    background-color: #D3D3D3;
+}
+
+table,
+th,
+td {
+    border: 2px solid white;
+    padding: 5px;
+}
+
+th {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: cursive;
+    color: gray;
+
+}
+
+td {
+    font-size: 14px;
+    color: gray;
+    font-weight: 400;
+    font-family: Georgia;
+}
+
+[data-tab-info] {
+    display: none;
+}
+
+.active[data-tab-info] {
+    display: block;
+}
+
+.tab-content {
+    font-size: 10px;
+    font-family: sans-serif;
+    color: rgb(82, 75, 75);
+    margin-top: -5.5%;
+    margin-left: 0%;
+}
+
+.tabs {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    margin-top: 1%;
+    margin-left: 25%;
+}
+
+.tabs span {
+    background: gray;
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.tabs span:hover {
+    background: gray;
+    cursor: pointer;
+    color: black;
+}

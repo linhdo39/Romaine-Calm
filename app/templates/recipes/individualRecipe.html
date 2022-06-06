@@ -4,51 +4,44 @@
 <html lang="en">
 
 <body align="center">
-    <div class="jumbotron" style ="padding: 1rem 1rem;">
+    <div class="jumbotron" style="padding: 1rem 1rem;">
         <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
             <fieldset>
                 <div>
-                </div>
-                <div style="width:95%;">
-                    <div>
-                        <a name="dataEntry"></a>
-                        <div class="form-group" style="width:100%;">
-                            <label for="Title"> {{recipe.name}} </label><br />
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <br />
-                <div></div>
-                <div>
-                    <div>
-                        <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} />
+                    <a name="dataEntry"></a>
+                    <div class="form-group">
+                        <table align="center">
+                            <tr>
+                                <td> 
+                                    <label for="Title"><h2>{{recipe.name}}</h2></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <img width="320" height="300" alt={{recipe.name}} src={{recipe.image}} /></td>
+                            </tr>
+                            <tr>
+                                <td> <b><label for="Ingredient">Ingredient </label></b>
+                                    <ul class='a'>
+                                        {% for line in recipe.ingredients%}
+                                        <li class='b'> {{line}} </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><label for="Instruction"> <a href={{recipe.instruction}} target="_blank">
+                                    View Instructions here</a></label></b></td>
+                            </tr>
+                        </table>
 
                     </div>
                 </div>
-                <br>
-                <div>
-                    <b><label for="Ingredient">Ingredient </label></b>
-                    <ul class='a'>
-                        {% for line in recipe.ingredients%}
-                        <li class='b'> {{line}} </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <br>
-                <div>
-                    <b><label for="Instruction"> <a href={{recipe.instruction}} target="_blank">View Instructions
-                                here</a></label></b>
-                </div>
+
             </fieldset>
-            <div>
-                <br />
-            </div>
+
         </form>
     </div>
-    </div>
-    </div>
-    </div>
+
 </body>
 
 </html>
