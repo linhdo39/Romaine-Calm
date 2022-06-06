@@ -32,49 +32,16 @@
             <div class="homepage-hero-content">
                 {% if user.is_authenticated %}
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<<<<<<< HEAD
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"> </span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <div class="navbar-nav mr-auto">
-                            <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
-                            <a class="nav-link" href="{% url 'recipes' %}">Find Recipe</a>
-                            <a class="nav-link" href="/add_recipe/">Add Recipe</a>
-                            <a class="nav-link" href="/add_ingredient/">Add Ingredient</a>
-                            <a class="nav-link" href="{% url 'help' %}">Help</a>
-                      </div>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Profile
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
-                          <a class="dropdown-item" href="{% url 'edit_settings' %}">Edit Settings</a>
-                          <a class="dropdown-item" href="{% url 'favorite' %}">My Favorite</a>
-                          <a class="dropdown-item" href="/my_recipe/">My Recipe</a>
-                          <a class="dropdown-item" href="/pantry/">My Pantry</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/logout/">Logout</a>
-                        </div>
-                      </div>
-                    </div>
-                  </nav>
-                {% else %}
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-=======
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
->>>>>>> Twinkle-Branch
                         <span class="navbar-toggler-icon"> </span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="navbar-nav mr-auto">
                             <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
                             <a class="nav-link" href="{% url 'recipes' %}">Find Recipe</a>
-                            <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
+                            <a class="nav-link" href="/add_recipe/">Add Recipe</a>
                             <a class="nav-link" href="/add_ingredient/">Add Ingredient</a>
                             <a class="nav-link" href="{% url 'about' %}">About Us</a>                          
                             <a class="nav-link" href="{% url 'help' %}">Help</a>
@@ -88,6 +55,7 @@
                                 <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
                                 <a class="dropdown-item" href="{% url 'edit_settings' %}">Edit Settings</a>
                                 <a class="dropdown-item" href="{% url 'favorite' %}">My Favorite</a>
+                                <a class="dropdown-item" href="/my_recipe/">My Recipe</a>
                                 <a class="dropdown-item" href="/pantry/">My Pantry</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout/">Logout</a>
