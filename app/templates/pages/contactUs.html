@@ -35,8 +35,8 @@
 
 <body align="center">
     <div class="Contactus" style="width:75%;margin: auto;">
-        <form action="/recipe/post" method="post">
-            <input name="__RequestVerificationToken" type="hidden" />
+        <form action="" method="post">
+            {% csrf_token %}
             <fieldset>
                 <legend>
                     <h3>Contact Us</h3>
