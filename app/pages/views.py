@@ -82,7 +82,7 @@ def contact_view(response):
     return render(response, "pages/contactUs.html", {})
 
 def help_view(response):
-    return render(response, "pages/soon.html", {})
+    return render(response, "pages/Help.html", {})
 
 def redirect_login(response):
     response = redirect('login/')
