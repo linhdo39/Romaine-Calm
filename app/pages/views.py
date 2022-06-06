@@ -12,15 +12,16 @@ from recipes.models import Recipe
 import requests
 import os
 
-#from dotenv import load_dotenv
-#load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 APP_ID = os.getenv('APP_ID')
 APP_KEY = os.getenv('APP_KEY')
 # Create your views here.
 
 # HOMEPAGE
 def homepage_view(request):
-    if request.method == 'POST' and 'like.x' in request.POST:
+    print(request.POST)
+    if request.method == 'POST' and 'unlike.y' in request.POST:
         favorite = Favorite(
             user = request.user,
             recipe_id = request.POST['submit']
@@ -84,7 +85,7 @@ def contact_view(response):
     return render(response, "pages/contactUs.html", {})
 
 def help_view(response):
-    return render(response, "pages/Help.html", {})
+    return render(response, "pages/help.html", {})
 
 def redirect_login(response):
     response = redirect('login/')
