@@ -1,5 +1,5 @@
 from tokenize import String
-from unicodedata import name
+from unicodedata import category, name
 from django.http import HttpRequest, HttpResponse
 import os
 from django.shortcuts import render
@@ -19,8 +19,12 @@ def all_view(request):
     if "search" in request.GET:
         recipe_list = Recipe.objects.order_by('?')[:20]
         search = request.GET["search"]
-        #url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + search + "&app_id=" + APP_ID+ "&app_key="+APP_KEY
-        recipe_list = Recipe.objects.all().filter(name__contains = search)
+        if(request.GET["primaryrecipecategory"] == '0'):
+            recipe_list = Recipe.objects.all().filter(name__contains = search)
+        else:
+            categories = {"1": "breakfast","2": "brunch","3": "lunch","4": "dinner","5": "dessert"}
+            #url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + search + "&app_id=" + APP_ID+ "&app_key="+APP_KEY
+            recipe_list = Recipe.objects.all().filter(name__contains = search, category=categories[request.GET["primaryrecipecategory"]])
         return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list})
     else:
         recipe_list = Recipe.objects.order_by('?')[:20]
