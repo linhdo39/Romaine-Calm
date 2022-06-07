@@ -16,19 +16,22 @@ APP_KEY = os.getenv('APP_KEY')
 # Create your views here.
 
 def all_view(request):
-    if "search" in request.GET:
+    category = "all"
+    if "primaryrecipecategory" in request.GET:
         recipe_list = Recipe.objects.order_by('?')[:20]
-        search = request.GET["search"]
         if(request.GET["primaryrecipecategory"] == '0'):
-            recipe_list = Recipe.objects.all().filter(name__contains = search)
+            return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
         else:
-            categories = {"1": "breakfast","2": "brunch","3": "lunch","4": "dinner","5": "dessert"}
-            #url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + search + "&app_id=" + APP_ID+ "&app_key="+APP_KEY
-            recipe_list = Recipe.objects.all().filter(name__contains = search, category=categories[request.GET["primaryrecipecategory"]])
-        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list})
+            recipe_list = Recipe.objects.all().filter(category = request.GET["primaryrecipecategory"])
+            category = request.GET["primaryrecipecategory"]
+        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
+    elif "search" in request.GET:
+        category = request.GET["search"]
+        recipe_list = Recipe.objects.all().filter(name__contains = category)
+        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
     else:
         recipe_list = Recipe.objects.order_by('?')[:20]
-        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list})
+        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
 
 def index_view(response,id):
     #return HttpResponse("recipe home")
