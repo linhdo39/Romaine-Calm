@@ -28,9 +28,9 @@
                     </tr>
                     {% for ingredient in ingredient_list%}
                     <tr>
-                        <th>tab 1</th>
                         <th>{{ingredient.ingredient_name}}</th>
                         <th>{{ingredient.ingredient_quantity}}</th>
+                        <th>{{ingredient.expiration_date}}</th>
                     </tr>
                     {% endfor %}
                 </table>
@@ -43,12 +43,12 @@
                         <th>Amount</th>
                         <th>Date</th>
                     </tr>
-                    {% for ingredient in ingredient_list%}
+                    {% for ingredient in almost_expire%}
 
                     <tr>
-                        <th>tab 2</th>
                         <th>{{ingredient.ingredient_name}}</th>
                         <th>{{ingredient.ingredient_quantity}}</th>
+                        <th>{{ingredient.expiration_date}}</th>
                     </tr>
                     {% endfor %}
                 </table>
