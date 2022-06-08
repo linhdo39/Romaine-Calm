@@ -1,0 +1,70 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+
+<body align="center">
+    <div class="jumbotron" style="padding: 1rem 1rem;">
+        <form action="/recipe/post" method="post"><input name="__RequestVerificationToken" type="hidden" />
+            <fieldset>
+                <div>
+                    <a name="dataEntry"></a>
+                    <div class="form-group">
+                        <table align="center">
+                            <tr>
+                                <td> 
+                                    <label for="Title"><h2>{{recipe.name}}</h2></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <img width="320" height="300" alt={{recipe.name}} src="{{recipe.recipe_photo.url}}"/></td>
+                            </tr>
+                            <tr>
+                                <td> 
+                                    <label for="Author"><h2>{{recipe.author}}</h2></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <b><label for="Ingredient">{{recipe.ingredient}} </label></b>                     
+                                    
+                                </td>
+                            </tr>
+                            <td style="padding-right:44px;">
+                                <label for="TotalHrs">TOTAL time </label>
+                            </td>
+                            <td>
+                                <p> {{recipe.total_hours}} hours and {{recipe.total_mins}} minutes </p>
+                            </td>
+                            <tr>
+                                <td><b><label for="Description"> 
+                                </label>Description</b></td>
+                                <td>
+                                <p>
+                                    {{recipe.description}}
+                                </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b><label for="Preparation"> 
+                                </label>Preparation</b></td>
+                                <td>
+                                <p>
+                                    {{recipe.preparation}}
+                                </p>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+            </fieldset>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+{% endblock %}
