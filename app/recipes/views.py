@@ -1,5 +1,5 @@
 from tokenize import String
-from unicodedata import category, name
+from unicodedata import name
 from django.http import HttpRequest, HttpResponse
 import os
 from django.shortcuts import render
@@ -16,22 +16,15 @@ APP_KEY = os.getenv('APP_KEY')
 # Create your views here.
 
 def all_view(request):
-    category = "all"
-    if "primaryrecipecategory" in request.GET:
+    if "search" in request.GET:
         recipe_list = Recipe.objects.order_by('?')[:20]
-        if(request.GET["primaryrecipecategory"] == '0'):
-            return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
-        else:
-            recipe_list = Recipe.objects.all().filter(category = request.GET["primaryrecipecategory"])
-            category = request.GET["primaryrecipecategory"]
-        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
-    elif "search" in request.GET:
-        category = request.GET["search"]
-        recipe_list = Recipe.objects.all().filter(name__contains = category)
-        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
+        search = request.GET["search"]
+        #url = "https://api.edamam.com/api/recipes/v2?type=public&q=" + search + "&app_id=" + APP_ID+ "&app_key="+APP_KEY
+        recipe_list = Recipe.objects.all().filter(name__contains = search)
+        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list})
     else:
         recipe_list = Recipe.objects.order_by('?')[:20]
-        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list, 'catergory':category})
+        return render(request, "recipes/findRecipe.html", {'recipe_list': recipe_list})
 
 def index_view(response,id):
     #return HttpResponse("recipe home")

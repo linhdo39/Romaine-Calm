@@ -20,11 +20,16 @@
             <div class="input-group"
                 style="background-color: #ffffff;border-radius:5px; z-index:0 !important;">
                 <input type="text" class="typeahead search-input-button" name="search" 
+<<<<<<< HEAD
                     placeholder="Search recipes" 
+=======
+                    placeholder="Search recipes" autofocus=""
+>>>>>>> Twinkle-Branch
                     style="text-indent: 4px;font-size: 21px;padding-left: 12px;z-index:1000; width:100% !important">
                     
             </div>
         </form>
+<<<<<<< HEAD
         <form role="filter">
             <table  align="center">
         <tr >
@@ -54,11 +59,49 @@
         </tr>
         </table>
         </form>
+=======
+>>>>>>> Twinkle-Branch
     </div>
     <div class="jumbotron" style="padding: 1rem 1rem;">
         <!-- Display list of recipes to choose from-->
         <div>
+<<<<<<< HEAD
             <table>
+=======
+            <table align="center">
+                <tr>
+                    <td>
+                        <div id="categorize">
+                            <div id="catpicker">
+                                <script type="text/javascript">
+                                    function changeDrop() {
+                                        var val = $("select#primaryrecipecategory").val(); // 0...11
+                                        if (val === "0") {
+                                            return;
+                                        }
+                                        $.get(
+                                            "/recipe/getcategories?id=" + val,
+                                            function (data) {
+                                                populateDropdown($("#recipecategory"), data);
+                                            }
+                                        );
+                                    }                               
+                                </script>
+                                <span style="float:left;width:100%;">
+                                    <select name="primaryrecipecategory" class="form-control" onchange="changeDrop();"
+                                        id="primaryrecipecategory" style="width:100% ; text-align: center; background-color: rgba(190, 189, 189, 0.137);;">
+                                        <option value="0">-- Please Select Recipe Categoty to sort --</option>
+                                        <option value="1">Breakfast</option>
+                                        <option value="2">Brunch</option>
+                                        <option value="3">Lunch</option>
+                                        <option value="4">Dinner</option>
+                                        <option value="5">Dessert</option>
+                                    </select>
+                                </span>
+                            </div>
+                    </td>
+                </tr>
+>>>>>>> Twinkle-Branch
                 <tr>
                     <td>
                         {% for recipe in recipe_list%}

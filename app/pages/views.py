@@ -20,6 +20,7 @@ APP_KEY = os.getenv('APP_KEY')
 
 # HOMEPAGE
 def homepage_view(request):
+    print(request.POST)
     if request.method == 'POST' and 'unlike.y' in request.POST:
         favorite = Favorite(
             user = request.user,
